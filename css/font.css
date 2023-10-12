@@ -1,0 +1,46 @@
+@charset "utf-8";
+/* font */
+@font-face {
+  font-family: 'VitroPride';
+  font-weight: normal;
+  font-style: normal;
+  src: url('../font/vitro/VitroPride.eot');
+  src: url('../font/vitro/VitroPride.eot?#iefix') format('embedded-opentype'),
+      url('../font/vitro/VitroPride.woff2') format('woff2'),
+      url('../font/vitro/VitroPride.woff') format('woff'),
+      url('../font/vitro/VitroPride.ttf') format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: 'KBODiaGothicBold';
+  font-weight: 600;
+  font-style: normal;
+  src: url('../font/kbo/KBODiaGothicBold.eot');
+  src: url('../font/kbo/KBODiaGothicBold.eot?#iefix') format('embedded-opentype'),
+      url('../font/kbo/KBODiaGothicBold.woff2') format('woff2'),
+      url('../font/kbo/KBODiaGothicBold.woff') format('woff'),
+      url('../font/kbo/KBODiaGothicBold.ttf') format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: 'KBODiaGothicLight';
+  font-weight: normal;
+  font-style: normal;
+  src: url('../font/kbo/KBODiaGothicLight.eot');
+  src: url('../font/kbo/KBODiaGothicLight.eot?#iefix') format('embedded-opentype'),
+      url('../font/kbo/KBODiaGothicLight.woff2') format('woff2'),
+      url('../font/kbo/KBODiaGothicLight.woff') format('woff'),
+      url('../font/kbo/KBODiaGothicLight.ttf') format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: 'KBODiaGothicMedium';
+  font-weight: normal;
+  font-style: normal;
+  src: url('../font/kbo/KBODiaGothicMedium.eot');
+  src: url('../font/kbo/KBODiaGothicMedium.eot?#iefix') format('embedded-opentype'),
+      url('../font/kbo/KBODiaGothicMedium.woff2') format('woff2'),
+      url('../font/kbo/KBODiaGothicMedium.woff') format('woff'),
+      url('../font/kbo/KBODiaGothicMedium.ttf') format("truetype");
+  font-display: swap;
+}

@@ -1,0 +1,25 @@
+@charset "utf-8";
+/* ============== MEDIA QUERIES ============== */
+@media screen and (max-width:1660px) {
+  .container {max-width: 90%;}
+  header .container {height: 13rem;}
+  #visual {padding:12vw 0 5vw; height: 46vw; }
+}
+@media screen and (max-width:960px) {
+  .mobile-btn {display: block;}
+
+  /* header {background-color: rgba(255, 255, 255, 1);} */
+  header .container {height: 11rem;}
+  header .logo {transform: scale(.9); transform-origin: left top;}
+  header nav {display: none;}
+
+  #visual {padding:14vw 0 5vw; height: 50vw;}
+  #visual .container h3 {font-size: 3.9vw; }
+}
+@media screen and (max-width:640px) {
+  .mobile-btn {top: 2em;}
+
+  header .container {height: 9rem;}
+  header .logo {transform: scale(.76);}
+  #visual {padding:18vw 0 5vw; height: 54vw;}
+}
