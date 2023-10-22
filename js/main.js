@@ -10,18 +10,14 @@ $(function(){
       $('#visual h2').addClass('active');
   }, 3100)
 
-//   setTimeout(function(){
-//     $('#visual h2').addClass('active');
-// }, 4500)
-
   // Mobile Menus
-  let mobileBtn = $('.mobile-btn');
-  let navMobile = $('.nav-mobile');
-  let layerMask = $('.layer-mask');
+  const mobileBtn = $('.mobile-btn');
+  const navMobile = $('.nav-mobile');
+  const layerMask = $('.layer-mask');
 
   mobileBtn.click(function(e) {
     e.preventDefault();
-    let temp = $(this).hasClass('active');
+    const temp = $(this).hasClass('active');
     if(temp) {
       $(this).removeClass('active');
       navMobile.removeClass('active');
@@ -33,6 +29,84 @@ $(function(){
     }
   });
 
+  // 주메뉴 클릭 시 스크롤
+  const $menu = $('header ul li'), $contents = $('section');
+  $menu.click(function(e) {
+    e.preventDefault();
+    $('.wrap').addClass('active');
+    $menu.find('a').removeClass('active');
+    $(this).find('a').addClass('active');
+    // 메뉴의 해당 li의 인덱스 번호 구하기
+    let idx = $(this).index();
+    let $section = $contents.eq(idx);
+    // 현재 선택된 section의 위치 정보(top)
+    let sectionDistance = $section.offset().top;
+    $('html, body').animate({
+      scrollTop:sectionDistance
+    }, 500)
+    if(idx >= 2) {
+      setTimeout(function(){
+        $('header').css('mix-blend-mode', 'screen');
+      }, 400);
+    }else{
+      setTimeout(function(){
+        $('header').css('mix-blend-mode', 'difference');
+      }, 400)
+    }
+  });
+  // 위로 이동 버튼 클릭 시 스크롤
+  const goTop = $("#goTop");
+  goTop.click(() => {
+    $menu.find('a').removeClass('active');
+    $('html, body').animate({
+      scrollTop: 0
+    }, 500)
+  });
+
+  // 스크롤 이동 감지
+  // firefox 브라우저인지 체크
+  const mousewheelevt=(/Firefox/i.test(navigator.userAgent))? "DOMMouseScroll" : "mousewheel" //FF doesn't recognize mousewheel as of FF3.x
+  // 브라우저 체크 후 이벤트 적용
+  $('body').on(mousewheelevt, function (e) {
+    const wheel = e.originalEvent.wheelDelta;
+
+    if (wheel > 0) {
+      //스크롤 올릴때
+      // console.log(`올리는 중 ${wheel}`);
+    }else{
+      //스크롤 내릴때
+      // console.log(`내리는 중 ${wheel}`);
+      $('.wrap').addClass('active');
+    }
+  });
+
+  // 윈도우 스크롤 시
+  $(window).scroll(function(){
+    // 비주얼 영역일 때 스크롤 숨김
+    const visual = $('#visual');
+    console.log(visual.offset().top, $(window).scrollTop());
+    if($(window).scrollTop() == 0) {
+      $('.wrap').removeClass('active');
+    }
+
+    // 스크롤 시 해당 영역 활성화
+    $contents.each(function(){
+      console.log($(this).offset().top, $(window).scrollTop() + 100);
+      if($(this).offset().top <= $(window).scrollTop() + 100) {
+        let idx = $(this).index();
+        $menu.find('a').removeClass('active');
+        $('.menu-mobile li').removeClass('active');
+        $menu.eq(idx).find('a').addClass('active');
+        $('.menu-mobile li').eq(idx).addClass('active');
+        if(idx >= 2) {
+          $('header').css('mix-blend-mode', 'screen');
+        }else{
+          $('header').css('mix-blend-mode', 'difference');
+        }
+      }
+    });
+  });
+
   // layerMask 클릭 시 모바일 메뉴 닫힘
   layerMask.click(function() {
     mobileBtn.removeClass('active');
@@ -42,59 +116,35 @@ $(function(){
 
   // 화면사이즈체크
   $(window).resize(function(){
-    let tmp = $(window).width();
-    if(tmp > 960) {
+    const screenWidth = $(window).width();
+    if(screenWidth > 960) {
       mobileBtn.removeClass('mobile-btn-active');
       navMobile.removeClass('active');
       layerMask.removeClass('active');
     }
   });
 
-  // 비주얼영상
-  // const numberOfVisual=3; 
-  // const visualNum = Math.round(Math.random()*(numberOfVisual-1))+1;
-  // const visualPath = (`video/bg_${visualNum}.mp4`);
-  // $('#visual .mp4').attr('src', visualPath);
-  // console.log(visualPath)
-  
-  // visual 화면이 보일 경우 scroll 숨겼다가, 벗어날 경우 scroll 보임
-  $(window).scroll(function(){
-    const visual = $('#visual');
-    console.log(visual.offset().top, $(window).scrollTop());
-    if($(window).scrollTop() == 0) {
-      $('.wrap').removeClass('active');
-    }
-    else if($(window).scrollTop() > 1760) {
-      $('header').css('mix-blend-mode', 'screen');
-    }else{
-      $('header').css('mix-blend-mode', 'difference');
-    }
+  // projects
+  // tabMenu
+  const tabMenu = $('.tabMenu li'), 
+  tabSlider = $('.swiper-outer > div');
+  tabMenu.click(function(e){
+    e.preventDefault();
+    tabMenu.removeClass('active');
+    $(this).addClass('active');
+    tabSlider.hide();
+    const tabTarget = $(this).find('a').attr('href');
+    $(tabTarget).show();
   });
-
-  // 스크롤 이동 감지
-  // firefox 브라우저인지 체크
-  var mousewheelevt=(/Firefox/i.test(navigator.userAgent))? "DOMMouseScroll" : "mousewheel" //FF doesn't recognize mousewheel as of FF3.x
-  // 브라우저 체크 후 이벤트 적용
-  $('body').on(mousewheelevt, function (e) {
-    const wheel = e.originalEvent.wheelDelta;
-
-    if (wheel > 0) {
-      //스크롤 올릴때
-      console.log(`올리는 중 ${wheel}`);
-    }else{
-      //스크롤 내릴때
-      console.log(`내리는 중 ${wheel}`);
-      $('.wrap').addClass('active');
-    }
-  });
+  tabMenu.eq(0).trigger('click');
 
   // swiper
   const swiper = new Swiper('.projects-list', {
-    loop: true,
-    // autoplay: {
-    //   delay: 2000,
-    //   disableOnInteraction: false,
-    // },
+    // loop: true,
+    autoplay: {
+      delay: 2000,
+      disableOnInteraction: false,
+    },
     // slidesPerView: 4,
     // spaceBetween: 30,
     navigation: {
@@ -122,14 +172,146 @@ $(function(){
         slidesPerView: 2,
         spaceBetween: 28,
       },
-      1200: {
-        slidesPerView: 3,
-        spaceBetween: 28,
-      },
+      // 1200: {
+      //   slidesPerView: 3,
+      //   spaceBetween: 28,
+      // },
       1700: {
-        slidesPerView: 4,
+        slidesPerView: 3,
         spaceBetween: 28,
       }
     },
   });
+
+  //modal
+  const projectEl = $('.projects-list li a');
+  //modal > open
+  $(projectEl).click(function(e){
+    e.preventDefault();
+    $('body').addClass('modal-active');
+    $('#modal').addClass('active');
+
+    // 영상 프로젝트 여부 확인
+    const hasVideo = $(this).is('[data-video]');
+    // 프로젝트 타이틀 가져오기
+    const projectTit = $(this).find('.desc').html().replace('<br>', ' - ');
+
+    // 프로젝트 설명 가져오기
+    const projectDesc = $(this).find('.desc').data('desc');
+    // 툴 정보 가져오기
+    const tools = $(this).find('.desc').data('tools');
+
+    if(hasVideo) {
+      $('#modal').removeClass('light');
+      $('#modal').addClass('dark');
+
+      $('#modal .modal-cont').prepend(`
+        <div class="video-area">
+          <div class="video">
+            <iframe src="https://www.youtube.com/embed/${$(this).data('video')}?rel=0&playsinline=1&autoplay=1" frameborder="0" name="" allowfullscreen></iframe>
+          </div>
+          <div class="btn-area">
+            <button type="button" class="btn-prev">prev</button>
+            <button type="button" class="btn-next">next</button>
+          </div>
+        </div>
+        <div class="info-area">
+          <h2>${projectTit}</h2>
+          <div class="tools">
+            <img src="img/tool/ico_${tools}.png" alt="${tools}" title="${tools}">
+          </div>
+          <p class="desc">${projectDesc}</p>
+        </div>
+      `);
+     }else{
+      $('#modal').removeClass('dark');
+      $('#modal').addClass('light');
+      alert('비디오 없음');
+      // View 정보 가져오기
+      const viewNum = $(this).find('.desc').data('view');
+      // Category 정보 가져오기
+      const projectCategory = $(this).find('.tag span').text();
+      // Client 정보 가져오기
+      const projectClient = $(this).find('.desc').data('client');
+      // Date 정보 가져오기
+      const projectDate = $(this).find('.desc').data('date');
+      // Work Role 정보 가져오기
+      const projectRole = $(this).find('.desc').data('work');
+      // Color 정보 가져오기
+      let projectColors = $(this).find('.desc').data('color');
+      let colorSplit = projectColors.split(',');
+
+      $('#modal').prepend(`<h2>${projectTit} <img src="img/tool/ico_${tools}.png" alt="${tools}" title="${tools}"></h2>`);
+      $('.modal-cont').prepend(`
+        <div class="info-area">
+          <ul>
+            <li>
+              <dl>
+                <dt>CLIENT</dt>
+                <dd>${projectClient}</dd>
+              </dl>
+            </li>
+            <li>
+              <dl>
+                <dt>CATEGORY</dt>
+                <dd>${projectCategory}</dd>
+              </dl>
+            </li>
+            <li>
+              <dl>
+                <dt>DATE</dt>
+                <dd>${projectDate}</dd>
+              </dl>
+            </li>
+            <li>
+              <dl>
+                <dt>WORK</dt>
+                <dd>${projectRole}</dd>
+              </dl>
+            </li>
+            <li>
+              <dl>
+                <dt>COLOR</dt>
+                <dd>
+                  <span style='background-color:${colorSplit[0]}'></span>
+                  <span style='background-color:${colorSplit[1]}'></span>
+                  <span style='background-color:${colorSplit[2]}'></span>
+                </dd>
+              </dl>
+            </li>
+          </ul>
+          <p class="desc">${projectDesc}</p>
+        </div>
+        <div class="view-area">
+          <img src="img/projects/view_${viewNum}.jpg">
+          <img src="img/projects/view_${viewNum}_1.jpg">
+        </div>
+      `);
+      $('#modal').append(`
+        <div class="modal-footer">
+          <div class="btn-area">
+            <button type="button" class="btn-prev">prev</button>
+            <button type="button" class="btn-next">next</button>
+          </div>
+        </div> 
+      `);
+    }
+    return true;
+  });
+
+  //modal > close
+  $('#modal .btn-close').click(function(){
+    $('#modal').removeClass('active');
+    $('#modal').removeClass('dark');
+    $('#modal').removeClass('light');
+    $('body').removeClass('modal-active');
+    $('.modal-cont > div').remove();
+    $('#modal h2').remove();
+    $('.modal-footer').remove();
+  });
+});
+
+AOS.init({
+  easing: 'ease-out-cubic',
+  duration: 1500,
 });
