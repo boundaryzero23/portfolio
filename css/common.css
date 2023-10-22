@@ -5,21 +5,18 @@
 /* root variables */
 :root {
   --color-white:#fff;
-  --color-black: #141414;
-  --color-lightgray: #ccc;
+  --color-black: #000;
+  --color-lightgray: #888;
+  --color-light: #ececec;
   --color-darkgray: #333;
-  --color-primary: #f24e1e;
-  --color-primary-light: #d98874;
-  --color-point: #2ae5c0;
-  --main-bg-color: #131313;
-  --point-bg-color: #2ae5c0;
-  /* --point-bg-color: #dfcbb5; */
+  --color-primary: #29dcb8;
+  --main-bg-color: #141414;
   --transition: all 500ms ease-in-out;
 }
 
 /* ----scroll---- */
 /* Firefox */
-* {scrollbar-width: thin;scrollbar-color: #888 #ddd;}
+* {scrollbar-width: thin; scrollbar-color: #888 #ddd;}
 
 /* Chrome, Edge and Safari */
 *::-webkit-scrollbar {height: 10px; width: 10px;}
@@ -37,7 +34,8 @@
 * {box-sizing: border-box;}
 html {font-size: 10px;}
 a {text-decoration: none; color: #333;}
-h2 {font-family: 'KBODiaGothicMedium'; font-size: 10rem; padding: 3rem 0;}
+h2 {font-family: 'KBODiaGothicMedium'; }
+.wrap h2 {font-size: 10rem; padding: 3rem 0;}
 h3 {font-family: 'KBODiaGothicBold'; font-size: 5.6rem; padding: 3vw 0 2vw;}
 p {font-family: 'KBODiaGothicLight'; font-size: 2rem; line-height: 1.5;}
 img {vertical-align: top;}

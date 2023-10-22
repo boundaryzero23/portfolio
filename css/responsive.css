@@ -1,9 +1,16 @@
 @charset "utf-8";
 /* ============== MEDIA QUERIES ============== */
 @media screen and (max-width:1660px) {
-  .container {max-width: 90%;}
   header .container {height: 13rem;}
   #visual {padding:12vw 0 5vw; height: 46vw; }
+}
+@media screen and (max-width:1536px) {
+  .container, 
+  #modal.dark .inner {width: 94%;}
+  #modal .btn-close {width: 24px; height: 24px;}
+  #modal.dark .inner {padding: 5rem 0 0;}
+
+  .sticker-wrap {max-width: 70%;}
 }
 @media screen and (max-width:960px) {
   .mobile-btn {display: block;}
