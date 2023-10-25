@@ -12,6 +12,17 @@
   font-display: swap;
 }
 @font-face {
+  font-family: 'VitroCore';
+  font-weight: normal;
+  font-style: normal;
+  src: url('../font/vitro/VitroCore.eot');
+  src: url('../font/vitro/VitroCore.eot?#iefix') format('embedded-opentype'),
+      url('../font/vitro/VitroCore.woff2') format('woff2'),
+      url('../font/vitro/VitroCore.woff') format('woff'),
+      url('../font/vitro/VitroCore.ttf') format("truetype");
+  font-display: swap;
+}
+@font-face {
   font-family: 'KBODiaGothicBold';
   font-weight: 600;
   font-style: normal;
