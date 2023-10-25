@@ -55,16 +55,12 @@
   </div>
   <!--// intro -->
 
-  <!-- <div data-w-id="3e9ad38d-ae66-1635-0add-f3132d17de8e" class="spline w-embed w-iframe" style="opacity: 1; will-change: transform; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d; display: block;"><iframe src="https://my.spline.design/primitivescopy-ef6b406b573568c29d4d7c60b39c351f/" frameborder="0" width="100%" height="100%" allowtransparency="true"></iframe></div> -->
-
   <!-- content -->
   <div id="wrap" class="wrap">
     <!-- mobile menu button -->
-    <a href="#" class="mobile-btn">
-      <span class="line-top"></span>
-      <span class="line"></span>
-      <span class="line-bottom"></span>
-    </a>
+    <button type="button" class="mobile-btn">
+      <i></i>
+    </button>
     <!-- mobile menu -->
     <div class="nav-mobile">
       <ul class="menu-mobile">
@@ -74,9 +70,10 @@
         <li><a href="#skill">SKILL</a></li>
         <li><a href="#contact">CONTACT</a></li>
       </ul>
+      <p>Copyright ZERO © 2023. ALL RIGHTS RESERVED.</p>
     </div>
     <!-- mobile menu mask -->
-    <div class="layer-mask"></div>
+    <!-- <div class="layer-mask"></div> -->
 
     <!-- header -->
     <header>
@@ -84,7 +81,7 @@
         <h1 class="logo"><a href="/">BOUNDARY ZERO PORTFOLIO</a></h1>
         <nav>
           <ul>
-            <li><a href="#visual">HOME</a></li>
+            <li><a href="#visual" class="active">HOME</a></li>
             <li><a href="#projects">PROJECTS</a></li>
             <li><a href="#about">WHY ZERO?</a></li>
             <li><a href="#skill">SKILL</a></li>
@@ -98,7 +95,7 @@
     <!-- main -->
     <main>
       <!-- visual -->
-      <section id="visual" class="target">
+      <section id="visual">
         <div class="head-copy">
           <video playsinline autoplay muted loop poster="../img/bg_video.png">
             <!-- <source src="my-video-url.webm" type="video/webm"> -->
@@ -106,7 +103,7 @@
             Your browser does not support the video tag.
           </video>
           <div class="text-box">
-            <h2><span>Hybrid designer across web design, publishing and motion graphics</span></h2>
+            <h2><span>Hybrid</span></h2>
             <h3>Beyond the <span>boundaries of Design</span></h3>
           </div>
         </div>
@@ -114,7 +111,7 @@
       <!--// visual -->
 
       <!-- projects -->
-      <section id="projects" class="section target">
+      <section id="projects" class="section">
         <div class="container">
           <h2>PRO<span>jects</span></h2>
 
@@ -141,7 +138,7 @@
                           <img src="img/projects/thumb_motion_1.jpg" alt="캐릭터 애니메이션">
                         </div>
                         <div class="desc" data-desc="Expression을 활용한 캐릭터 헤드 리깅 영상" data-tools="aftereffects">캐릭터 애니메이션<br> HEAD RIG</div>
-                        <div class="tag"><span>MOTION</span></div>
+                        <div class="tag"><span>PRINTING</span></div>
                       </a>
                     </li>
                     <li class="swiper-slide">
@@ -174,9 +171,9 @@
                     <li class="swiper-slide">
                       <a href="#">
                         <div class="img-box">
-                          <img src="img/projects/thumb_app_1.jpg" alt="">
+                          <img src="img/projects/thumb_app_1.png" alt="">
                         </div>
-                        <div class="desc" data-desc="사용자에게 '안정성','신뢰성', '확실성' 등을 전달할 수 있는 푸른색 계열의 색상과  심플하지만 부드러운 라인 일러스트를 사용하여 신뢰감을 주되 딱딱하지 않은 느낌을 주려고 하였다.<br>3일 간의 짧은 시간 안에 앱의 디자인 작업을 마치고, 그 결과물을 개발자에게 Figma 파일로 전달하였다." data-tools="figma" data-view="app_1" data-client="YH데이타베이스" data-date="2023" data-work="UI 디자인" data-color="#2b5cf0, #091e87, #00ef62">보이스피싱 차단 앱<br>와이콜미</div>
+                        <div class="desc" data-desc="사용자에게 '안정성','신뢰성', '확실성' 등을 전달할 수 있는 푸른색 계열의 색상과  심플하지만 부드러운 라인 일러스트를 사용하여 신뢰감을 주되 딱딱하지 않은 느낌을 주려고 하였다.&lt;br&gt;3일 간의 짧은 시간 안에 앱의 디자인 작업을 마치고, 그 결과물을 개발자에게 Figma 파일로 전달하였다." data-tools="figma" data-view="app_1" data-client="YH데이타베이스" data-date="2023" data-work="UI 디자인" data-color="#2b5cf0, #091e87, #00ef62">보이스피싱 차단 앱<br>와이콜미</div>
                         <div class="tag"><span>APP</span></div>
                       </a>
                     </li>
@@ -185,7 +182,7 @@
                         <div class="img-box">
                           <img src="img/projects/thumb_web_1.jpg" alt="">
                         </div>
-                        <div class="desc" data-desc="사용자에게 '안정성','신뢰성', '확실성' 등을 전달할 수 있는 푸른색 계열의 색상과  심플하지만 부드러운 라인 일러스트를 사용하여 신뢰감을 주되 딱딱하지 않은 느낌을 주려고 하였다.<br>3일 간의 짧은 시간 안에 앱의 디자인 작업을 마치고, 그 결과물을 개발자에게 Figma 파일로 전달하였다." data-tools="photoshop" data-view="web_1" data-client="KB국민은행" data-date="2022 ~ 2023" data-work="UI 디자인/퍼블리싱" data-color="#7d7365, #ffcd09, #424242">KB국민은행<br>AI 모니터링 시스템</div>
+                        <div class="desc" data-desc="설명" data-tools="photoshop" data-view="web_1" data-client="KB국민은행" data-date="2022 ~ 2023" data-work="UI 디자인/퍼블리싱" data-color="#7d7365, #ffcd09, #424242">KB국민은행<br>AI 모니터링 시스템</div>
                         <div class="tag"><span>WEB</span></div>
                       </a>
                     </li>
@@ -194,7 +191,16 @@
                         <div class="img-box">
                           <img src="img/projects/thumb_web_2.png" alt="">
                         </div>
-                        <div class="desc" data-desc="사용자에게 '안정성','신뢰성', '확실성' 등을 전달할 수 있는 푸른색 계열의 색상과  심플하지만 부드러운 라인 일러스트를 사용하여 신뢰감을 주되 딱딱하지 않은 느낌을 주려고 하였다.<br>3일 간의 짧은 시간 안에 앱의 디자인 작업을 마치고, 그 결과물을 개발자에게 Figma 파일로 전달하였다." data-tools="photoshop" data-view="web_2" data-client="YH데이타베이스" data-date="2022" data-work="UI 디자인/퍼블리싱" data-color="#7d7365, #ffcd09, #424242">y-UMonitor<br>웹 정보 수집기 관리자페이지</div>
+                        <div class="desc" data-desc="설명" data-tools="photoshop" data-view="web_2" data-client="YH데이타베이스" data-date="2022" data-work="UI 디자인/퍼블리싱" data-color="#4a54e3, #fdd123, #0e0944">y-UMonitor<br>웹 정보 수집기 관리자페이지</div>
+                        <div class="tag"><span>WEB</span></div>
+                      </a>
+                    </li>
+                    <li class="swiper-slide">
+                      <a href="#">
+                        <div class="img-box">
+                          <img src="img/projects/thumb_web_3.jpg" alt="">
+                        </div>
+                        <div class="desc" data-desc="설명" data-tools="photoshop" data-view="web_3" data-client="신한은행" data-date="2022" data-work="UI 디자인/퍼블리싱" data-color="#4a54e3, #fdd123, #0e0944">신한은행<br>로그인 화면</div>
                         <div class="tag"><span>WEB</span></div>
                       </a>
                     </li>
@@ -212,24 +218,46 @@
                     <li class="swiper-slide">
                       <a href="#">
                         <div class="img-box">
-                          <img src="img/projects/thumb_app_1.jpg" alt="">
+                          <img src="img/projects/thumb_app_1.png" alt="">
                         </div>
-                        <div class="desc" data-desc="사용자에게 '안정성','신뢰성', '확실성' 등을 전달할 수 있는 푸른색 계열의 색상과  심플하지만 부드러운 라인 일러스트를 사용하여 신뢰감을 주되 딱딱하지 않은 느낌을 주려고 하였다.<br>3일 간의 짧은 시간 안에 앱의 디자인 작업을 마치고, 그 결과물을 개발자에게 Figma 파일로 전달하였다." data-tools="figma" data-view="app_1" data-client="YH데이타베이스" data-date="2023" data-work="UI 디자인" data-color="#2b5cf0, #091e87, #00ef62">보이스피싱 차단 앱<br>와이콜미</div>
+                        <div class="desc" data-desc="사용자에게 '안정성','신뢰성', '확실성' 등을 전달할 수 있는 푸른색 계열의 색상과  심플하지만 부드러운 라인 일러스트를 사용하여 신뢰감을 주되 딱딱하지 않은 느낌을 주려고 하였다.&lt;br&gt;3일 간의 짧은 시간 안에 앱의 디자인 작업을 마치고, 그 결과물을 개발자에게 Figma 파일로 전달하였다." data-tools="figma" data-view="app_1" data-client="YH데이타베이스" data-date="2023" data-work="UI 디자인" data-color="#2b5cf0, #091e87, #00ef62">보이스피싱 차단 앱<br>와이콜미</div>
                         <div class="tag"><span>APP</span></div>
                       </a>
                     </li>
-                    <li class="swiper-slide">Slide 2</li>
-                    <li class="swiper-slide">Slide 3</li>
-                    <li class="swiper-slide">Slide 4</li>
-                    <li class="swiper-slide">Slide 5</li>
-                    <li class="swiper-slide">Slide 6</li>
+                    <li class="swiper-slide">
+                      <a href="#">
+                        <div class="img-box">
+                          <img src="img/projects/thumb_web_1.jpg" alt="">
+                        </div>
+                        <div class="desc" data-desc="설명" data-tools="photoshop" data-view="web_1" data-client="KB국민은행" data-date="2022 ~ 2023" data-work="UI 디자인/퍼블리싱" data-color="#7d7365, #ffcd09, #424242">KB국민은행<br>AI 모니터링 시스템</div>
+                        <div class="tag"><span>WEB</span></div>
+                      </a>
+                    </li>
+                    <li class="swiper-slide">
+                      <a href="#">
+                        <div class="img-box">
+                          <img src="img/projects/thumb_web_2.png" alt="">
+                        </div>
+                        <div class="desc" data-desc="설명" data-tools="photoshop" data-view="web_2" data-client="YH데이타베이스" data-date="2022" data-work="UI 디자인/퍼블리싱" data-color="#4a54e3, #fdd123, #0e0944">y-UMonitor<br>웹 정보 수집기 관리자페이지</div>
+                        <div class="tag"><span>WEB</span></div>
+                      </a>
+                    </li>
+                    <li class="swiper-slide">
+                      <a href="#">
+                        <div class="img-box">
+                          <img src="img/projects/thumb_web_3.jpg" alt="">
+                        </div>
+                        <div class="desc" data-desc="설명" data-tools="photoshop" data-view="web_3" data-client="신한은행" data-date="2022" data-work="UI 디자인/퍼블리싱" data-color="#4a54e3, #fdd123, #0e0944">신한은행<br>로그인 화면</div>
+                        <div class="tag"><span>WEB</span></div>
+                      </a>
+                    </li>
                   </ul>
                 </div>
                 <div class="btn-prev"></div>
                 <div class="btn-next"></div>
               </div>
 
-              <!-- PRINGTING -->
+              <!-- PRINTING -->
               <div id="tabs-3">
                 <div class="swiper projects-list">
                   <ul class="swiper-wrapper">
@@ -326,7 +354,7 @@
 
       <!-- whyZero -->
       <!-- about -->
-      <section id="about" class="section target" data-aos="zoom-out-up" data-aos-duration="1000">
+      <section id="about" class="section" data-aos="zoom-out-up" data-aos-duration="1000">
         <div class="container" data-aos="zoon-out-up" data-aos-delay="300">
           <h2 data-aos="fade-right" data-aos-delay="300" data-aos-anchor="#about .container"><span>why Zero</span>?</h2>
           <p data-aos="fade-right" data-aos-delay="500" data-aos-anchor="#about h2"><strong>디자인, 퍼블리싱, 그리고 모션그래픽을 통합</strong>하여<br>
@@ -369,31 +397,31 @@
           </p>
           <div class="sticker-wrap">
             <div class="only-pc">
-              <img src="img/skill-11.svg" class="sticker standard" alt="standard" data-aos="fade-down" data-aos-duration="200" data-aos-delay="1100" data-aos-easing="ease-in-back" data-aos-anchor=".premiere">
+              <img src="img/skill-11.svg" class="sticker standard" alt="standard" data-aos="fade-down" data-aos-duration="400" data-aos-delay="1100" data-aos-easing="ease-in-back" data-aos-anchor=".premiere">
 
-              <img src="img/skill-13.svg" class="sticker jquery" alt="jquery" data-aos="fade-down" data-aos-duration="250" data-aos-delay="1100" data-aos-easing="ease-in-back" data-aos-anchor=".premiere">
+              <img src="img/skill-13.svg" class="sticker jquery" alt="jquery" data-aos="fade-down" data-aos-duration="400" data-aos-delay="1100" data-aos-easing="ease-in-back" data-aos-anchor=".premiere">
 
-              <img src="img/skill-12.svg" class="sticker aftereffects" alt="aftereffects" data-aos="fade-down" data-aos-duration="250" data-aos-delay="1100" data-aos-easing="ease-in-back" data-aos-anchor=".premiere">
+              <img src="img/skill-12.svg" class="sticker aftereffects" alt="aftereffects" data-aos="fade-down" data-aos-duration="400" data-aos-delay="1100" data-aos-easing="ease-in-back" data-aos-anchor=".premiere">
 
-              <img src="img/skill-7.svg" class="sticker accessibility" alt="accessibility" data-aos="fade-down" data-aos-duration="100" data-aos-delay="500" data-aos-easing="ease-in-back" data-aos-anchor=".premiere">
+              <img src="img/skill-7.svg" class="sticker accessibility" alt="accessibility" data-aos="fade-down" data-aos-duration="400" data-aos-delay="500" data-aos-easing="ease-in-back" data-aos-anchor=".premiere">
 
-              <img src="img/skill-10.svg" class="sticker html5" alt="html5" data-aos="fade-down" data-aos-duration="300" data-aos-delay="550" data-aos-easing="ease-in-back" data-aos-anchor=".premiere">
+              <img src="img/skill-10.svg" class="sticker html5" alt="html5" data-aos="fade-down" data-aos-duration="400" data-aos-delay="550" data-aos-easing="ease-in-back" data-aos-anchor=".premiere">
 
-              <img src="img/skill-5.svg" class="sticker css3" alt="css3" data-aos="fade-down" data-aos-duration="200" data-aos-easing="ease-in-back">
+              <img src="img/skill-5.svg" class="sticker css3" alt="css3" data-aos="fade-down" data-aos-duration="400" data-aos-easing="ease-in-back">
 
-              <img src="img/skill-1.svg" class="sticker illustrator" alt="illustrator" data-aos="fade-down" data-aos-duration="100" data-aos-easing="ease-in-back">
+              <img src="img/skill-1.svg" class="sticker illustrator" alt="illustrator" data-aos="fade-down" data-aos-duration="400" data-aos-easing="ease-in-back">
 
-              <img src="img/skill-6.svg" class="sticker photoshop" alt="photoshop" data-aos="fade-down" data-aos-duration="200" data-aos-delay="500" data-aos-easing="ease-in-back" data-aos-anchor=".premiere">
+              <img src="img/skill-6.svg" class="sticker photoshop" alt="photoshop" data-aos="fade-down" data-aos-duration="400" data-aos-delay="500" data-aos-easing="ease-in-back" data-aos-anchor=".premiere">
 
-              <img src="img/skill-8.svg" class="sticker scss" alt="scss" data-aos="fade-down" data-aos-duration="200" data-aos-easing="ease-in-back">
+              <img src="img/skill-8.svg" class="sticker scss" alt="scss" data-aos="fade-down" data-aos-duration="400" data-aos-easing="ease-in-back">
 
               <img src="img/skill-2.svg" class="sticker premiere" alt="premiere" data-aos="fade-down" data-aos-duration="200" data-aos-easing="ease-in-back">
 
-              <img src="img/skill-9.svg" class="sticker figma" alt="figma" data-aos="fade-down" data-aos-duration="100" data-aos-delay="1100" data-aos-easing="ease-in-back" data-aos-anchor=".premiere">
+              <img src="img/skill-9.svg" class="sticker figma" alt="figma" data-aos="fade-down" data-aos-duration="400" data-aos-delay="1100" data-aos-easing="ease-in-back" data-aos-anchor=".premiere">
 
-              <img src="img/skill-3.svg" class="sticker cinema4d" alt="cinema4d" data-aos="fade-down" data-aos-duration="200" data-aos-delay="600" data-aos-easing="ease-in-back" data-aos-anchor=".premiere">
+              <img src="img/skill-3.svg" class="sticker cinema4d" alt="cinema4d" data-aos="fade-down" data-aos-duration="400" data-aos-delay="600" data-aos-easing="ease-in-back" data-aos-anchor=".premiere">
 
-              <img src="img/skill-4.svg" class="sticker xd" alt="xd" data-aos="fade-down" data-aos-duration="100" data-aos-easing="ease-in-back">
+              <img src="img/skill-4.svg" class="sticker xd" alt="xd" data-aos="fade-down" data-aos-duration="400" data-aos-easing="ease-in-back">
             </div>
             <!-- <div class="only-mo">
               <img src="/creator/@resource/images/re01/cheer_zone_mo.svg" class="sticker zone aos-init" alt="Z-ONE" data-aos="fade-down" data-aos-duration="500">
@@ -418,9 +446,11 @@
       <!--// whyZero -->
 
       <!-- contact -->
-      <section id="contact" class="section target">
+      <section id="contact" class="section">
         <div class="container">
-          <h2><span>Cont</span>act</h2>
+          <div class="tit-wrap">
+            <h2><span>Cont</span>act</h2>
+          </div>
           <p>저와 함께 프로젝트를 진행하고 싶으신가요?</p>
           <p>boundaryzero23@gmail.com</p>
           <button type="button" id="goTop">위로 이동</button>
@@ -437,7 +467,7 @@
           <p class="copyright">Copyright ZERO &copy; 2023. ALL RIGHTS RESERVED.</p>
           <p>본 페이지는 상업적 목적이 아닌 개인 포트폴리오용으로 제작되었습니다.</p>
         </div>
-        <div class="logo">Zero Boundary</div>
+        <div class="logo">Boundary Zero</div>
       </div>
     </footer>
     <!--// footer -->
