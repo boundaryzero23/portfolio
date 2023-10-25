@@ -7,13 +7,13 @@ $(function(){
   }, 3000)
   setTimeout(function(){
       $('#intro').addClass('hidden');
-      $('#visual h2').addClass('active');
+      $('header').removeClass('blend-mode-screen');
   }, 3100)
 
   // Mobile Menus
   const mobileBtn = $('.mobile-btn');
   const navMobile = $('.nav-mobile');
-  const layerMask = $('.layer-mask');
+  // const layerMask = $('.layer-mask');
 
   mobileBtn.click(function(e) {
     e.preventDefault();
@@ -21,11 +21,17 @@ $(function(){
     if(temp) {
       $(this).removeClass('active');
       navMobile.removeClass('active');
-      layerMask.removeClass('active');
+      navMobile.find('li').removeClass('active');
+      $('body').removeClass('modal-active');
+
+      // layerMask.removeClass('active');
+      // $('header').removeClass('blend-mode-screen');
     }else{
       $(this).addClass('active');
       navMobile.addClass('active');
-      layerMask.addClass('active');
+      $('body').addClass('modal-active');
+      // $('header').removeClass('blend-mode-screen');
+      // layerMask.addClass('active');
     }
   });
 
@@ -46,14 +52,44 @@ $(function(){
     }, 500)
     if(idx >= 2) {
       setTimeout(function(){
-        $('header').css('mix-blend-mode', 'screen');
+        $('header').addClass('blend-mode-screen');
       }, 400);
     }else{
       setTimeout(function(){
-        $('header').css('mix-blend-mode', 'difference');
+        $('header').removeClass('blend-mode-screen');
       }, 400)
     }
   });
+
+  // 모바일 메뉴 클릭 시 스크롤
+  const $menuEl = $('.menu-mobile li');
+  $menuEl.click(function(e){
+    e.preventDefault();
+    navMobile.removeClass('active');
+    mobileBtn.removeClass('active');
+    $('body').removeClass('modal-active');
+
+    $menuEl.find('a').removeClass('active');
+    $(this).find('a').addClass('active');
+    // 메뉴의 해당 li의 인덱스 번호 구하기
+    let idx = $(this).index();
+    let $section = $contents.eq(idx);
+    // 현재 선택된 section의 위치 정보(top)
+    let sectionDistance = $section.offset().top;
+    $('html, body').animate({
+      scrollTop:sectionDistance
+    }, 500)
+    if(idx >= 2) {
+      setTimeout(function(){
+        $('header').addClass('blend-mode-screen');
+      }, 400);
+    }else{
+      setTimeout(function(){
+        $('header').removeClass('blend-mode-screen');
+      }, 400)
+    }
+  });
+
   // 위로 이동 버튼 클릭 시 스크롤
   const goTop = $("#goTop");
   goTop.click(() => {
@@ -84,14 +120,19 @@ $(function(){
   $(window).scroll(function(){
     // 비주얼 영역일 때 스크롤 숨김
     const visual = $('#visual');
-    console.log(visual.offset().top, $(window).scrollTop());
+    // console.log(visual.offset().top, $(window).scrollTop());
     if($(window).scrollTop() == 0) {
       $('.wrap').removeClass('active');
+    }
+    if($('header').hasClass('blend-mode-screen')) {
+      $('.mobile-btn').addClass('blend-mode-screen');
+    }else{
+      $('.mobile-btn').removeClass('blend-mode-screen');
     }
 
     // 스크롤 시 해당 영역 활성화
     $contents.each(function(){
-      console.log($(this).offset().top, $(window).scrollTop() + 100);
+      // console.log($(this).offset().top, $(window).scrollTop() + 100);
       if($(this).offset().top <= $(window).scrollTop() + 100) {
         let idx = $(this).index();
         $menu.find('a').removeClass('active');
@@ -99,28 +140,29 @@ $(function(){
         $menu.eq(idx).find('a').addClass('active');
         $('.menu-mobile li').eq(idx).addClass('active');
         if(idx >= 2) {
-          $('header').css('mix-blend-mode', 'screen');
+          $('header').addClass('blend-mode-screen');
         }else{
-          $('header').css('mix-blend-mode', 'difference');
+          $('header').removeClass('blend-mode-screen');
         }
       }
     });
   });
 
   // layerMask 클릭 시 모바일 메뉴 닫힘
-  layerMask.click(function() {
-    mobileBtn.removeClass('active');
-    navMobile.removeClass('active');
-    $(this).removeClass('active');
-  });
+  // layerMask.click(function() {
+  //   mobileBtn.removeClass('active');
+  //   navMobile.removeClass('active');
+  //   $(this).removeClass('active');
+  // });
 
-  // 화면사이즈체크
+
+  //화면사이즈체크
   $(window).resize(function(){
     const screenWidth = $(window).width();
-    if(screenWidth > 960) {
-      mobileBtn.removeClass('mobile-btn-active');
+    if(screenWidth > 1024) {
+      mobileBtn.removeClass('active');
       navMobile.removeClass('active');
-      layerMask.removeClass('active');
+      $('body').removeClass('modal-active');
     }
   });
 
@@ -156,14 +198,6 @@ $(function(){
         slidesPerView: 1,
         spaceBetween: 28,
       },
-      480: {
-        slidesPerView: 1,
-        spaceBetween: 28,
-      },
-      560: {
-        slidesPerView: 1,
-        spaceBetween: 28,
-      },
       768: {
         slidesPerView: 2,
         spaceBetween: 28,
@@ -172,11 +206,7 @@ $(function(){
         slidesPerView: 2,
         spaceBetween: 28,
       },
-      // 1200: {
-      //   slidesPerView: 3,
-      //   spaceBetween: 28,
-      // },
-      1700: {
+      1560: {
         slidesPerView: 3,
         spaceBetween: 28,
       }
@@ -226,7 +256,7 @@ $(function(){
      }else{
       $('#modal').removeClass('dark');
       $('#modal').addClass('light');
-      alert('비디오 없음');
+      // alert('비디오 없음');
       // View 정보 가져오기
       const viewNum = $(this).find('.desc').data('view');
       // Category 정보 가져오기
@@ -312,6 +342,7 @@ $(function(){
 });
 
 AOS.init({
-  easing: 'ease-out-cubic',
-  duration: 1500,
+  // easing: 'ease-out-cubic',
+  // duration: 1500,
+  once: true,
 });
