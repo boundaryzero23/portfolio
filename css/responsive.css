@@ -7,6 +7,8 @@
 
   #projects .swiper-outer .btn-prev {transform: translate(45%, -50%) scale(.86); }
   #projects .swiper-outer .btn-next {transform: translate(-55%, -50%) scale(.86);}
+
+  #skill .container {width: 100%;}
 }
 @media screen and (max-width:1560px) { 
   #projects h2 {margin-left: 20%; transform: scale(.9); transform-origin: left center;}
@@ -19,6 +21,8 @@
   #about .text {transform: scale(.8); transform-origin: right center;}
 
   #contact h2 {transform: scale(.9); transform-origin: left bottom;}
+  #contact .tit-wrap::before {width: 37rem;}
+  #contact .tit-wrap::after {top: 71%;}
 
   .sticker-wrap {max-width: 80%; transform-origin: center bottom;}
 
@@ -60,15 +64,27 @@
 
   #about h2 {transform: scale(.75); margin-bottom: -6rem;}
   #about .text {transform: scale(.55);}
+
+  #contact h2 {transform: scale(.75);}
+  #contact .tit-wrap::before {width: 31rem;}
+  #contact .tit-wrap::after {top: 75%;}
+  #contact .tit-wrap ~ p {font-size: 2.4rem;}
+  #contact p {margin-top: 0;}
+
+  footer .copyright {font-size: 1.5rem;}
 }
 @media screen and (max-width:960px) {
-  h3 {font-size: 3.4rem;}
-  p, #about ul li {font-size: 1.6rem;}
+  h3 {font-size: 3.8rem;}
+  p, #about ul li {font-size: 1.7rem;}
   #projects .inner {margin-top: -3rem;}
 
   #about .text {bottom: -19rem;}
 
   #skill {padding-top: 6rem;}
+
+  #contact {margin-top: -8rem;}
+
+  #goTop {transform: scale(.8); transform-origin: right bottom; }
 }
 @media screen and (max-width:768px) {
   .mobile-btn {top: 2em;}
@@ -80,6 +96,13 @@
   #projects .swiper-outer .btn-next {transform: translate(-55%, -50%) scale(.55);}
 
   #about h2 {transform: scale(.55); margin-bottom: -12rem;}
+
+  #contact h2 {transform: scale(.55);}
+  #contact .tit-wrap::before {width: 23rem;}
+  #contact .tit-wrap::after {top: 82%; height: 0.6rem;}
+
+  footer .logo {width: 29vw; height: 7vw;}
+  footer .copyright {font-size: 1.4rem;}
 }
 @media screen and (max-width:640px) {
   .container {width: 90%;}
@@ -90,4 +113,11 @@
   #about .text {bottom: -20rem; transform: scale(.4);}
   #about h2 {transform: scale(.65); font-size: 9rem;}
   #about::before{content: ''; backdrop-filter: blur(3px); height: 99%; position: absolute; left: 0; top: 0; right: 0; bottom: 0;}
+
+  #contact {margin-top: -13rem;}
+  #contact .tit-wrap ~ p {font-size: 1.8rem;}
+
+  footer .container {flex-direction: column-reverse; gap: 1rem; align-items: flex-start;}
+  footer .logo {background-position: 0% 50%;}
+  #goTop {transform: scale(.7); position: fixed; right: 2rem; bottom: 2rem; background: rgba(20, 20, 20, .8); backdrop-filter: blur(5px);}
 }
