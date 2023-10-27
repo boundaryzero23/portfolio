@@ -187,6 +187,8 @@ $(function(){
       delay: 2000,
       disableOnInteraction: false,
     },
+    slideToClickedSlide: true,
+    // allowTouchMove: false,
     // slidesPerView: 4,
     // spaceBetween: 30,
     navigation: {
@@ -210,7 +212,7 @@ $(function(){
         slidesPerView: 3,
         spaceBetween: 28,
       }
-    },
+    }
   });
 
   //modal
