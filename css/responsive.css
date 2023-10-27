@@ -1,9 +1,12 @@
 @charset "utf-8";
 /* ============== MEDIA QUERIES ============== */
 @media screen and (max-width:1780px) {
+
+
+
   .container {width: 94%;}
   header .container {height: 13rem;}
-  #visual {padding:12vw 0 5vw; height: 46vw; }
+  #visual {padding:12vw 0 5vw; height: 48vw;}
 
   #projects .swiper-outer .btn-prev {transform: translate(45%, -50%) scale(.86); }
   #projects .swiper-outer .btn-next {transform: translate(-55%, -50%) scale(.86);}
@@ -26,13 +29,23 @@
 
   .sticker-wrap {max-width: 80%; transform-origin: center bottom;}
 
+  /* modal */
+  /* #modal.dark .modal-cont {flex-wrap: wrap; height: calc(100vh - 11rem);
+overflow-y: auto;}
+  #modal.dark .modal-cont > div {width: 100%;} */
+  #modal.dark .modal-cont {flex-wrap: wrap; height: calc(100vh - 11rem);
+    overflow-y: auto;}
+  #modal.dark .modal-cont > div {width: 97%; height: auto;}
+
   #modal.dark .inner {width: 94%;}
   #modal .btn-close {width: 24px; height: 24px;}
-  #modal.dark .inner {padding: 5rem 0 0;}
+  #modal.dark .inner {padding: 7rem 0 0;}
 }
 @media screen and (max-width:1200px) { 
   p, #about ul li {font-size: 1.8rem;}
   h3 {font-size: 4.6rem;}
+
+  #visual h3 {font-size: 4.7rem; padding: 2rem 0 0;}
 
   #projects .tabMenu a {font-size: 2.2rem;}
   #projects .swiper-wrapper {height: 48rem;}
@@ -45,26 +58,28 @@
 @media screen and (max-width:1024px) {
   .wrap {height: auto;}
   .section {padding: 4rem 0 8rem;}
+  .container {width: 90%;}
   .mobile-btn {display: flex;}
   header .container {height: 11rem;}
   header .logo {width: 10.7rem; height: 4.7rem;}
   header nav {display: none;}
 
-  #visual {padding:14vw 0 5vw; height: 50vw; }
+  #visual {padding:20vw 0 5vw; height: 62vw; }
   #visual .container h3 {font-size: 3.9vw; }
 
   #projects h2 {margin-left: 0; transform: scale(.75);}
-  #projects nav {width: 49rem; margin-right: 0; align-self: flex-end; z-index: 3;}
-  #projects .tabMenu a {padding: 2rem 1rem; font-size: 2.1rem;}
-  .tabMenu {display: flex; justify-content: space-between;}
-  #projects .inner {flex-direction: column; margin-top: -6rem;}
-  #projects .swiper-outer {width: 97%;}
+  #projects nav {width: 100%; z-index: 3;}
+  #projects .tabMenu a {padding: 2rem 1rem; font-size: 2.4rem;}
+  .tabMenu {display: flex; justify-content: flex-end;}
+  #projects .inner {flex-wrap: wrap; justify-content: flex-end; margin-top: -7rem; margin-top: -3rem; height: 48rem;}
+  #projects .swiper-outer {width: 100%; margin-top: 1rem;}
   #projects .swiper-outer .btn-prev {transform: translate(45%, -50%) scale(.65); }
   #projects .swiper-outer .btn-next {transform: translate(-55%, -50%) scale(.65);}
 
   #about h2 {transform: scale(.75); margin-bottom: -6rem;}
   #about .text {transform: scale(.55);}
 
+  #contact {margin-top: -16rem;}
   #contact h2 {transform: scale(.75);}
   #contact .tit-wrap::before {width: 31rem;}
   #contact .tit-wrap::after {top: 75%;}
@@ -76,7 +91,7 @@
 @media screen and (max-width:960px) {
   h3 {font-size: 3.8rem;}
   p, #about ul li {font-size: 1.7rem;}
-  #projects .inner {margin-top: -3rem;}
+  #visual h3 {font-size: 4rem;}
 
   #about .text {bottom: -19rem;}
 
@@ -87,16 +102,25 @@
   #goTop {transform: scale(.8); transform-origin: right bottom; }
 }
 @media screen and (max-width:768px) {
+  .container {width: 92%;}
+  .section {padding: 4rem 0 12rem;}
   .mobile-btn {top: 2em;}
+  .nav-mobile .menu-mobile {margin-top: 30%;}
   header .container {height: 9rem;}
-  #visual {padding:18vw 0 5vw; height: 54vw;}
-
+  #visual {padding:25vw 0 5vw; height: 69vw; }
+  #visual h3 {font-size: 4.5vw; }
+  #visual .text-box {height: 50vw;}
+  
   #projects h2 {transform: scale(.55);}
+  #projects nav {width: 75%;}
   #projects .swiper-outer .btn-prev {transform: translate(55%, -50%) scale(.55); }
   #projects .swiper-outer .btn-next {transform: translate(-55%, -50%) scale(.55);}
+  #projects .swiper-slide .desc {font-size: 2.4rem;}
 
   #about h2 {transform: scale(.55); margin-bottom: -12rem;}
+  #about .text {bottom: -24rem;}
 
+  #contact {margin-top: -18rem;}
   #contact h2 {transform: scale(.55);}
   #contact .tit-wrap::before {width: 23rem;}
   #contact .tit-wrap::after {top: 82%; height: 0.6rem;}
@@ -108,9 +132,13 @@
   .container {width: 90%;}
   #projects nav {width: 100%;}
   #projects .tabMenu a {font-size: 3.7vw;}
-  #projects .inner {margin-top: 0;}
+  #projects .inner {margin-top: 0; justify-content: center;}
+  /* #projects .swiper-slide .desc {font-size: 2.4rem;} */
+  /* #projects .swiper-outer {width: 94%;} */
+  .tabMenu {justify-content: center;}
 
-  #about .text {bottom: -20rem; transform: scale(.4);}
+  #about .text {display: none;}
+  /* #about .text {bottom: -20rem; transform: scale(.4);} */
   #about h2 {transform: scale(.65); font-size: 9rem;}
   #about::before{content: ''; backdrop-filter: blur(3px); height: 99%; position: absolute; left: 0; top: 0; right: 0; bottom: 0;}
 
@@ -120,4 +148,22 @@
   footer .container {flex-direction: column-reverse; gap: 1rem; align-items: flex-start;}
   footer .logo {background-position: 0% 50%;}
   #goTop {transform: scale(.7); position: fixed; right: 2rem; bottom: 2rem; background: rgba(20, 20, 20, .8); backdrop-filter: blur(5px);}
+}
+@media screen and (max-width:560px) {
+  #visual {padding: 40vw 0 5vw; height: 90vw;}
+  #about h2 {transform: scale(.65);}
+  #about p, #about ul li {font-size: 3.7vw;}
+  #contact {margin-top: -20rem;}
+}
+@media screen and (max-width:440px) {
+  .nav-mobile .menu-mobile {margin-top: 40%;}
+  .nav-mobile .menu-mobile li a {font-size: 2.8rem;}
+  #projects h2 {transform: scale(.45);}
+  #about h2 {transform: scale(.75);}
+  #contact h2 span {width: 90vw;}
+  #contact .tit-wrap::before {width: 58%;}
+  
+  /* #contact h2 {font-size: 26vw;}
+  #contact .tit-wrap::before {width: 54vw;} */
+  #goTop {transform: scale(.5);}
 }

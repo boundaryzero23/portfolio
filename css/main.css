@@ -93,14 +93,14 @@ justify-content: center; background-color: transparent;padding: 0; cursor: point
 .mobile-btn.active i::after {transform: rotate(-45deg);}
 
 /* 모바일 메뉴 영역 */
-.nav-mobile {position: fixed; top: 0; right: -100vw; width: 100vw; height: 100vh; z-index: 98; background-color: var(--main-bg-color); display: flex; justify-content: center; align-items: center; flex-wrap: wrap;}
+.nav-mobile {position: fixed; top: 0; right: -100vw; width: 100vw; height: 100vh; z-index: 98; background-color: var(--main-bg-color); display: flex; justify-content: center; align-items: center; flex-direction: column;}
 .nav-mobile.active {right:0;}
-.nav-mobile .menu-mobile {width: 100%; margin-top: 7vw;}
+.nav-mobile .menu-mobile {width: 100%; margin-top: 21%; flex-grow: 4;}
 .nav-mobile .menu-mobile li {height: 6.4rem; display: flex; justify-content: center; align-items: center; }
 .nav-mobile .menu-mobile li a {display:block; width: 100%; text-align: center; color: var(--color-white); font-family: 'VitroPride'; font-size: 3.2rem; opacity: 0.5; transition: var(--transition);}
 .nav-mobile .menu-mobile li a:hover {opacity: 1; font-family: 'VitroCore'; }
 .nav-mobile .menu-mobile li.active a {color: var(--color-white);}
-.nav-mobile p {font-size: 1.1rem; color: var(--color-lightgray);}
+.nav-mobile p {font-size: 1.1rem; color: var(--color-lightgray); flex-grow: 1;}
 
 /* ---- content ---- */
 .wrap {height: 100vh; overflow: hidden; background-color: var(--main-bg-color);}
@@ -125,7 +125,7 @@ header nav a.active {font-family: 'VitroCore';}
 #visual .head-copy h2 {font-family: 'KBODiaGothicBold'; overflow: hidden; padding: 0; }
 #visual .text-box {position: absolute; top: 0; left: 0; width: 100%; height: 48vw; background-color: #fff; color: #000; display: flex; justify-content: center; align-items: flex-start; mix-blend-mode: screen;}
 #visual h2 span {font-family: 'KBODiaGothicBold'; display: inline-block; color: var(--color-darkgray); font-size: 27vw; line-height: 24vw; white-space: nowrap; text-transform: uppercase; margin-left: -8vw; }
-#visual h3 {font-family: 'KBODiaGothicMedium'; font-size: 3vw; padding: 2.2vw 0 0; color: #888; position: absolute; left: 6.9vw; top: 23vw;}
+#visual h3 {font-family: 'KBODiaGothicMedium'; font-size: 4.5rem; padding: 2.2vw 0 0; color: #888; position: absolute; left: 6.9vw; top: 23vw;}
 #visual h3 span {color: #333; /*-webkit-text-stroke: 1px #888; */}
 
 /* @keyframes slideText {
@@ -282,7 +282,7 @@ bottom: 0; width: 41rem; height: 100%; background-color: var(--main-bg-color); z
 #contact .tit-wrap + p {padding-top: 2rem; color: var(--color-white); }
 #contact p {margin-top: 1rem;}
 
-#goTop {width: 11rem; height: 11rem; background-color: var(--main-bg-color); color: var(--color-white); border: 2px solid var(--color-darkgray); /*position: fixed; bottom: 2rem; right: 2rem; z-index: 99;*/ position: absolute; right: 0; bottom: 0; text-indent: -9999px; transition: var(--transition)}
+#goTop {width: 11rem; height: 11rem; background-color: var(--main-bg-color); color: var(--color-white); border: 2px solid var(--color-darkgray); /*position: fixed; bottom: 2rem; right: 2rem; z-index: 99;*/ position: absolute; right: 0; bottom: 0; text-indent: -9999px; transition: var(--transition); z-index: 9;}
 #goTop:hover {border-color: var(--color-primary);} 
 #goTop::before {content: ''; width: 5.6rem; height: 5.6rem; background: url('../img/ico_top.png') 50% no-repeat; background-size: contain; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);}
 #goTop:hover::before {background-image: url('../img/ico_top_on.png')}
