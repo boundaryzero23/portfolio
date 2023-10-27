@@ -1,11 +1,9 @@
 @charset "utf-8";
 /* ============== MEDIA QUERIES ============== */
 @media screen and (max-width:1780px) {
-
-
-
   .container {width: 94%;}
   header .container {height: 13rem;}
+
   #visual {padding:12vw 0 5vw; height: 48vw;}
 
   #projects .swiper-outer .btn-prev {transform: translate(45%, -50%) scale(.86); }
@@ -48,16 +46,16 @@ overflow-y: auto;}
   #visual h3 {font-size: 4.7rem; padding: 2rem 0 0;}
 
   #projects .tabMenu a {font-size: 2.2rem;}
-  #projects .swiper-wrapper {height: 48rem;}
-  #projects .tag {font-size: 1.8rem; height: 4.4rem; line-height: 2.6;}
+  /* #projects .swiper-wrapper {height: 48rem;} */
+  #projects .tag {font-size: 1.9rem; height: 5.4rem; line-height: 2.7; border-radius:0 0 0 3rem}
 
   #about .text {transform: scale(.75);}
 
   .sticker-wrap {max-width: 100%;}
 }
-@media screen and (max-width:1024px) {
+@media screen and (max-width:1180px) {
   .wrap {height: auto;}
-  .section {padding: 4rem 0 8rem;}
+  .section {padding: 4rem 0 18rem;}
   .container {width: 90%;}
   .mobile-btn {display: flex;}
   header .container {height: 11rem;}
@@ -71,10 +69,11 @@ overflow-y: auto;}
   #projects nav {width: 100%; z-index: 3;}
   #projects .tabMenu a {padding: 2rem 1rem; font-size: 2.4rem;}
   .tabMenu {display: flex; justify-content: flex-end;}
-  #projects .inner {flex-wrap: wrap; justify-content: flex-end; margin-top: -7rem; margin-top: -3rem; height: 48rem;}
+  #projects .inner {/* height: auto; */ flex-wrap: wrap; justify-content: flex-end; margin-top: -7rem; margin-top: -3rem;}
   #projects .swiper-outer {width: 100%; margin-top: 1rem;}
   #projects .swiper-outer .btn-prev {transform: translate(45%, -50%) scale(.65); }
   #projects .swiper-outer .btn-next {transform: translate(-55%, -50%) scale(.65);}
+  #projects .swiper-slide {border-radius: 1.7rem;}
 
   #about h2 {transform: scale(.75); margin-bottom: -6rem;}
   #about .text {transform: scale(.55);}
@@ -87,6 +86,22 @@ overflow-y: auto;}
   #contact p {margin-top: 0;}
 
   footer .copyright {font-size: 1.5rem;}
+}
+@media screen and (max-width:1024px) {
+  #intro .intro-logo img {height: 70px}
+
+  #skill .only-pc {display: none;}
+  #skill .only-mo {display: block;}
+  #skill .sticker-wrap:before			{padding-bottom: 36.24901497241923%;}
+  #skill .sticker.accessibility				{top: 0; left: 13.333%; width: 57.867%;}
+	#skill .sticker.css3				{top: 30.960%; left: 25.867%; width: 15.733%;}
+	#skill .sticker.illustrator				{top: 51.703%; left: 38.533%; width: 52.533%;}
+	#skill .sticker.photoshop				{top: 9.659%; left: 57.493%; width: 35.733%;}
+	#skill .sticker.scss				{top: 41.486%; right: 36.560%; width: 59.733%;}
+	#skill .sticker.premiere				{top: 14.647%; left: 9.000%; width: 46.133%;}
+	#skill .sticker.figma					{top: 23.220%; right: 4.533%; width: 64.000%;}
+	#skill .sticker.cinema4d				{top: 66.254%; right: 37.333%; width: 44.800%;}
+  #skill .sticker.xd				{top: 54.391%; right: 13.6%; width: 12.8%;}
 }
 @media screen and (max-width:960px) {
   h3 {font-size: 3.8rem;}
@@ -103,9 +118,8 @@ overflow-y: auto;}
 }
 @media screen and (max-width:768px) {
   .container {width: 92%;}
-  .section {padding: 4rem 0 12rem;}
+  .section {padding: 4rem 0 16rem;}
   .mobile-btn {top: 2em;}
-  .nav-mobile .menu-mobile {margin-top: 30%;}
   header .container {height: 9rem;}
   #visual {padding:25vw 0 5vw; height: 69vw; }
   #visual h3 {font-size: 4.5vw; }
@@ -126,37 +140,52 @@ overflow-y: auto;}
   #contact .tit-wrap::after {top: 82%; height: 0.6rem;}
 
   footer .logo {width: 29vw; height: 7vw;}
-  footer .copyright {font-size: 1.4rem;}
+  footer .info p {font-size: 1rem;}
 }
 @media screen and (max-width:640px) {
+  .section {padding: 4rem 0 8rem;}
   .container {width: 90%;}
+  h3 {font-size: 3.2rem;}
+  #projects h2 {transform-origin: left top;}
   #projects nav {width: 100%;}
-  #projects .tabMenu a {font-size: 3.7vw;}
-  #projects .inner {margin-top: 0; justify-content: center;}
-  /* #projects .swiper-slide .desc {font-size: 2.4rem;} */
-  /* #projects .swiper-outer {width: 94%;} */
   .tabMenu {justify-content: center;}
+  #projects .tabMenu a {font-size: 4vw;}
+  #projects .inner {margin-top: -6rem; justify-content: center;}
+  #projects .swiper-wrapper {height: 48rem;}
+  #projects .swiper-slide .desc {font-size: 2rem;}
+  #projects .swiper-outer {width: 98%;}
 
+  p, #about ul li {font-size: 1.3rem;}
+  #about h3 {margin-top: 3rem;}
+  #about p {margin-bottom: 1rem;}
+  #about p br {display: none;}
   #about .text {display: none;}
-  /* #about .text {bottom: -20rem; transform: scale(.4);} */
+  #about .text {bottom: -20rem; transform: scale(.4);}
   #about h2 {transform: scale(.65); font-size: 9rem;}
-  #about::before{content: ''; backdrop-filter: blur(3px); height: 99%; position: absolute; left: 0; top: 0; right: 0; bottom: 0;}
+  /* #about::before{content: ''; backdrop-filter: blur(3px); height: 99%; position: absolute; left: 0; top: 0; right: 0; bottom: 0;} */
+
+  #skill .text-play .play li {font-size: 11rem;}
 
   #contact {margin-top: -13rem;}
-  #contact .tit-wrap ~ p {font-size: 1.8rem;}
+  #contact .tit-wrap ~ p {font-size: 1.5rem;}
+  #contact .tit-wrap + p {font-size: 1.7rem;}
 
   footer .container {flex-direction: column-reverse; gap: 1rem; align-items: flex-start;}
   footer .logo {background-position: 0% 50%;}
   #goTop {transform: scale(.7); position: fixed; right: 2rem; bottom: 2rem; background: rgba(20, 20, 20, .8); backdrop-filter: blur(5px);}
 }
 @media screen and (max-width:560px) {
-  #visual {padding: 40vw 0 5vw; height: 90vw;}
+  #visual {padding: 40vw 0 5vw; height: 100vw;}
+  #visual .text-box {height: 60vw;}
+
+  #projects .tag {font-size: 1.5rem; height: 4.4rem; line-height: 4.4rem;}
+
   #about h2 {transform: scale(.65);}
   #about p, #about ul li {font-size: 3.7vw;}
+  
   #contact {margin-top: -20rem;}
 }
 @media screen and (max-width:440px) {
-  .nav-mobile .menu-mobile {margin-top: 40%;}
   .nav-mobile .menu-mobile li a {font-size: 2.8rem;}
   #projects h2 {transform: scale(.45);}
   #about h2 {transform: scale(.75);}
@@ -166,4 +195,11 @@ overflow-y: auto;}
   /* #contact h2 {font-size: 26vw;}
   #contact .tit-wrap::before {width: 54vw;} */
   #goTop {transform: scale(.5);}
+}
+@media screen and (max-width:360px) {
+  .nav-mobile .menu-mobile li {height: 5.4rem;}
+  .nav-mobile .menu-mobile li a {font-size: 2.4rem;}
+  #visual {height: 110vw;}
+  #visual h3 {margin-top: 3rem;}
+  #visual .text-box {height: 60vw;}
 }
