@@ -240,10 +240,6 @@ $(function(){
           <div class="video">
             <iframe src="https://www.youtube.com/embed/${$(this).data('video')}?rel=0&playsinline=1&autoplay=1" frameborder="0" name="" allowfullscreen></iframe>
           </div>
-          <div class="btn-area">
-            <button type="button" class="btn-prev">prev</button>
-            <button type="button" class="btn-next">next</button>
-          </div>
         </div>
         <div class="info-area">
           <h2>${projectTit}</h2>
