@@ -47,7 +47,7 @@ $(function(){
     let $section = $contents.eq(idx);
     // 현재 선택된 section의 위치 정보(top)
     let sectionDistance = $section.offset().top;
-    $('html, body').animate({
+    $('html, body').stop().animate({
       scrollTop:sectionDistance
     }, 500)
     if(idx >= 2) {
@@ -59,6 +59,16 @@ $(function(){
         $('header').removeClass('blend-mode-screen');
       }, 400)
     }
+  });
+
+  // 스크롤 버튼 클릭 시 프로젝트 섹션으로 이동
+  $('.scroll_icon a').click(function(e){
+    e.preventDefault();
+    let targetDistance = $('#projects').offset().top;
+    $('.wrap').addClass('active');
+    $('html, body').stop().animate({
+      scrollTop:targetDistance
+    }, 500)
   });
 
   // 모바일 메뉴 클릭 시 스크롤
@@ -315,16 +325,16 @@ $(function(){
           <img src="img/projects/view_${viewNum}_1.jpg">
         </div>
       `);
-      $('#modal').append(`
-        <div class="modal-footer">
-          <div class="btn-area">
-            <button type="button" class="btn-prev">prev</button>
-            <button type="button" class="btn-next">next</button>
-          </div>
-        </div> 
-      `);
+      // $('#modal').append(`
+      //   <div class="modal-footer">
+      //     <div class="btn-area">
+      //       <button type="button" class="btn-prev">prev</button>
+      //       <button type="button" class="btn-next">next</button>
+      //     </div>
+      //   </div> 
+      // `);
     }
-    return true;
+    // return true;
   });
 
   //modal > close
@@ -337,6 +347,9 @@ $(function(){
     $('#modal h2').remove();
     $('.modal-footer').remove();
   });
+  
+
+ 
 });
 
 AOS.init({
