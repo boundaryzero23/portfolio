@@ -29,7 +29,7 @@
 #intro ul li:nth-child(4) i span {animation: scale2 1.4s; animation-delay: 2.2s;animation-fill-mode: forwards;}
 
 #intro .intro-logo {position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);animation: zin  0.1s;z-index: 0;animation-delay: 1.9s; animation-fill-mode: forwards;}
-#intro .intro-logo img { height: 110px; }
+#intro .intro-logo img { height: 80px; }
 
 @keyframes circle1 {
   0% {transform: translate(38px,-38px);}
@@ -161,8 +161,8 @@ header nav a.active {font-family: 'VitroCore';}
 #projects .swiper-outer .btn-next::before {transform: translate(-50%, -50%) rotate(180deg); left: 54%;}
 #projects .btn-disabled {opacity: 0.5; filter:grayscale(1)}
 
-.projects-list .img-box {padding-top: 122%; position: relative; overflow: hidden; text-align: center; height: 100%; }
-#projects .swiper-slide .img-box::before {content: ''; background: rgb(0,0,0,.5); background: linear-gradient(0deg, rgba(0,0,0,1) 0%, transparent 60%); width: 100%; height: 100%; display: inline-block; position: absolute; left: 0; bottom: 0; z-index: 1;}
+.projects-list .img-box {padding-top: 100%; position: relative; overflow: hidden; text-align: center; height: 100%; }
+#projects .swiper-slide .img-box::before {content: ''; background: rgb(0,0,0,.5); background: linear-gradient(0deg, rgba(0,0,0,.9) 0%, transparent 60%); width: 100%; height: 100%; display: inline-block; position: absolute; left: 0; bottom: 0; z-index: 1;}
 #projects .swiper-slide .img-box img {filter:grayscale(1) contrast(1.4); position: absolute; width: 100%; height: 100%; position: absolute; left: 0; top: 0; object-fit: cover; opacity: .6; }
 #projects .swiper-slide:hover .img-box img {filter:grayscale(0); opacity: 1;}
 #projects .swiper-slide .desc {color: var(--color-white); position: absolute; left: 2.8rem; bottom: 2.8rem; font-size: 2.8rem; font-family: 'KBODiaGothicLight'; line-height: 1.2; opacity: 0.7; z-index: 2;}
@@ -177,29 +177,35 @@ body.modal-active {display: flex; overflow: hidden;}
 #modal.active {display: block;}
 #modal.light {background: var(--color-white);}
 #modal.dark {background: var(--main-bg-color) url('../img/bg_modal.png') 80% -51% no-repeat; color: var(--color-white); background-blend-mode: hard-light;}
-#modal.dark .inner {position: relative;}
-#modal .btn-close {width: 24px; height: 24px; background: url('../img/btn_close_1.png') 50% no-repeat; cursor: pointer; text-indent: -9999px; position: absolute; right: 2rem; top: 2rem; }
+#modal .btn-close {width: 24px; height: 24px; background: url('../img/btn_close_1.png') 50% no-repeat; cursor: pointer; text-indent: -9999px; position: absolute; right: 2rem; top: 2rem; z-index: 2;}
 #modal.dark .btn-close {background: url('../img/btn_close.png') 50% no-repeat;}
 #modal.light .btn-close {top: 3.5rem;}
 
 #modal .inner {margin: 0 auto; }
-#modal.light .inner {width: 100%; position: relative; padding: 1rem 0;}
-#modal.dark .inner {max-width: 1700px; width: 96%; display: flex; justify-content: space-between; align-items: flex-start; gap: 3%; padding: 7rem 0; }
+#modal.light .inner {width: 100%; position: relative; padding: 11rem 0 1rem; overflow-y: scroll; height: 100vh;}
+
+#modal.dark .inner {max-width: 1880px; width: 100%; display: flex; justify-content: space-between; align-items: flex-start; gap: 3%; padding: 7rem 0; position: relative;}
 
 #modal h2 {font-size: 3.4rem; line-height: 1.3; padding: 1.5rem 0; margin-bottom: 1rem; letter-spacing: -0.5pt;}
-#modal.light h2 {display: flex; align-items: center; border-bottom: 2px solid var(--main-bg-color); padding: 2rem; margin-bottom: 0;}
-#modal.light h2 img {margin-left: 2rem;}
+#modal.light h2 {border-bottom: 2px solid var(--main-bg-color); padding: 2rem; margin-bottom: 0; 
+  position: fixed; z-index: 1;
+  width: 100%; 
+  background: linear-gradient(90deg, transparent 0%, #fff 100%); 
+  backdrop-filter: blur(3px); }
+#modal.light h2 span {margin-right: 1rem;}
+#modal.light h2 img {margin: 0 2rem 0 0; vertical-align: middle;}
+#modal.dark h2 {padding: 0 0 1.5rem;}
 
-#modal .video-area {width: 70%; height: 100%; display: flex; flex-direction: column; justify-content: space-between; gap: 2rem;}
+#modal .video-area {width: 80%; height: 100%; display: flex; flex-direction: column; justify-content: space-between; gap: 2rem;}
 #modal .video-area .video {width: 100%; padding-top: 56.25%; overflow: hidden; position: relative;}
 #modal .video-area iframe {width: 100%; height: 100%; position: absolute; top: 0; left: 50%; transform: translateX(-50%);}
-
-#modal .info-area .desc {font-size: 1.8rem; color: var(--color-lightgray); word-break: break-all;}
-#modal.dark .info-area {width: 30%; height: 100%;}
+#modal .info-area .desc p {font-size: 1.8rem; color: var(--color-lightgray); word-break: break-all; margin-bottom: 2rem;}
+#modal.dark .info-area {width: 20%; height: 100%;}
 #modal.dark .info-area .desc {margin-top: 6rem;}
 #modal.light .info-area {padding: 0 3rem;}
 #modal.light .info-area ul {display: flex; justify-content: space-between; align-items: center;}
 #modal.light .info-area .desc {margin: 2rem 0; line-height: 1.7; font-size: 1.5rem;}
+#modal.light .info-area .desc p {color: var(--color-darkgray);}
 #modal.light .info-area li {padding: 2rem 0;}
 #modal.light .info-area dt {font-family: 'KBODiaGothicMedium'; font-size: 1.8rem;}
 #modal.light .info-area dd {font-family: 'KBODiaGothicLight'; font-size: 1.7rem; color: var(--color-lightgray);}
@@ -207,10 +213,10 @@ body.modal-active {display: flex; overflow: hidden;}
 #modal.light .info-area dd {padding: 5px 0;}
 #modal.light .info-area dd span {display: inline-block; vertical-align: middle; width: 20px; height: 20px; background-color: #ddd; border-radius: 50%;}
 
-#modal.dark .modal-cont {width: 1700px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; gap: 3%;}
-#modal.light .inner {overflow-y: scroll; height: calc(100vh - 10rem);}
+#modal.dark .modal-cont {width: 98%; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; gap: 3%;}
+
 /* #modal.light .modal-cont {overflow-y: scroll; height: calc(100vh - 10rem);} */
-#modal.light .view-area {text-align: center; padding: 2rem}
+#modal.light .view-area {text-align: center; padding: 0 2rem 2rem}
 #modal.light .view-area img {max-width: 99%;}
 
 #modal.light .modal-footer {width: 100%; height: 7rem; position: fixed; bottom: 0; text-align: center; background: linear-gradient(90deg, transparent 0%, #fff 100%); border-top: 1px solid rgba(255, 255, 255, .5); backdrop-filter: blur(3px); z-index: 999;}
@@ -340,7 +346,7 @@ footer .copyright {opacity: .6; font-size: 1.7rem;}
   width: 100%;
   height: 100%;}
 
-.scroll_icon {position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); height: 10rem;text-align: center; font-size: 1rem; z-index: 999; border-radius: 1rem 3rem 0 0; padding: 1rem; display: flex; flex-direction: column; justify-content: center;}
+.scroll_icon {position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); height: 10rem;text-align: center; font-size: 1rem; z-index: 90; border-radius: 1rem 3rem 0 0; padding: 1rem; display: flex; flex-direction: column; justify-content: center;}
 .scroll_icon img {width: 60%;}
 .scroll_icon span {display: block;  margin-top: .5rem;}
 .scroll_icon a {display: block; animation:movingIcon 1.2s infinite reverse;}
