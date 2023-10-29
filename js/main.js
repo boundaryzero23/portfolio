@@ -172,7 +172,10 @@ $(function(){
     if(screenWidth > 1024) {
       mobileBtn.removeClass('active');
       navMobile.removeClass('active');
-      $('body').removeClass('modal-active');
+      // 모달창이 열려 있지 않으면 modal-active 제거
+      if($('#modal').hasClass('active') != true) {
+        $('body').removeClass('modal-active');
+      }
     }
   });
 
@@ -181,12 +184,18 @@ $(function(){
   const tabMenu = $('.tabMenu li'), 
   tabSlider = $('.swiper-outer > div');
   tabMenu.click(function(e){
-    e.preventDefault();
-    tabMenu.removeClass('active');
-    $(this).addClass('active');
-    tabSlider.hide();
-    const tabTarget = $(this).find('a').attr('href');
-    $(tabTarget).show();
+    e.preventDefault();  
+    if($(this).index() == 4) {
+      // 비디오 카테고리 포트폴리오 준비 중
+      alert('준비 중입니다.')
+    }else{
+      // 나머지 카테고리
+      tabMenu.removeClass('active');
+      $(this).addClass('active');
+      tabSlider.hide();
+      const tabTarget = $(this).find('a').attr('href');
+      $(tabTarget).show();
+    }
   });
   tabMenu.eq(0).trigger('click');
 
@@ -258,7 +267,7 @@ $(function(){
           <div class="tools">
             <img src="img/tool/ico_${tools}.png" alt="${tools}" title="${tools}">
           </div>
-          <p class="desc">${projectDesc}</p>
+          <div class="desc">${projectDesc}</div>
         </div>
       `);
      }else{
@@ -268,7 +277,7 @@ $(function(){
       // View 정보 가져오기
       const viewNum = $(this).find('.desc').data('view');
       // Category 정보 가져오기
-      const projectCategory = $(this).find('.tag span').text();
+      // const projectCategory = $(this).find('.tag span').text();
       // Client 정보 가져오기
       const projectClient = $(this).find('.desc').data('client');
       // Date 정보 가져오기
@@ -279,7 +288,7 @@ $(function(){
       let projectColors = $(this).find('.desc').data('color');
       let colorSplit = projectColors.split(',');
 
-      $('#modal').prepend(`<h2>${projectTit} <img src="img/tool/ico_${tools}.png" alt="${tools}" title="${tools}"></h2>`);
+      $('#modal').prepend(`<h2><span>${projectTit}</span> <img src="img/tool/ico_${tools}.png" alt="${tools}" title="${tools}"></h2>`);
       $('.modal-cont').prepend(`
         <div class="info-area">
           <ul>
@@ -287,12 +296,6 @@ $(function(){
               <dl>
                 <dt>CLIENT</dt>
                 <dd>${projectClient}</dd>
-              </dl>
-            </li>
-            <li>
-              <dl>
-                <dt>CATEGORY</dt>
-                <dd>${projectCategory}</dd>
               </dl>
             </li>
             <li>
@@ -318,7 +321,7 @@ $(function(){
               </dl>
             </li>
           </ul>
-          <p class="desc">${projectDesc}</p>
+          <div class="desc">${projectDesc}</div>
         </div>
         <div class="view-area">
           <img src="img/projects/view_${viewNum}.jpg">
