@@ -325,7 +325,7 @@ $(function(){
         </div>
         <div class="view-area">
           <img src="img/projects/view_${viewNum}.jpg">
-          <img src="img/projects/view_${viewNum}_1.jpg">
+          
         </div>
       `);
       // $('#modal').append(`
