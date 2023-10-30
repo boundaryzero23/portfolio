@@ -240,8 +240,12 @@
   .nav-mobile .menu-mobile li a {font-size: 2.8rem;}
   #projects h2 {transform: scale(.45);}
   #about h2 {transform: scale(.75);}
-  #contact h2 span {width: 90vw;}
+
+  #contact {padding-top: 3rem;}
+  #contact h2 {transform: scale(.55); font-size: 23vw;}
+  #contact h2 span {width: 86vw; margin-right: -9rem;}
   #contact .tit-wrap::before {width: 58%;}
+  #contact .tit-wrap::after {top: 79%;}
   
   /* #contact h2 {font-size: 26vw;}
   #contact .tit-wrap::before {width: 54vw;} */
@@ -251,6 +255,8 @@
 @media screen and (max-width:360px) {
   .nav-mobile .menu-mobile li {height: 5.4rem;}
   .nav-mobile .menu-mobile li a {font-size: 2.4rem;}
+/* 
+  #contact h2 {transform: scale(.45); font-size: 23vw;} */
   /* #visual {height: 110vw;}
   #visual h3 {margin-top: 3rem;}
   #visual .text-box {height: 60vw;} */
