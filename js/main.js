@@ -202,10 +202,10 @@ $(function(){
   // swiper
   const swiper = new Swiper('.projects-list', {
     // loop: true,
-    autoplay: {
-      delay: 2000,
-      disableOnInteraction: false,
-    },
+    // autoplay: {
+    //   delay: 2000,
+    //   disableOnInteraction: false,
+    // },
     slideToClickedSlide: true,
     // allowTouchMove: false,
     // slidesPerView: 4,
@@ -232,6 +232,14 @@ $(function(){
         spaceBetween: 28,
       }
     }
+  });
+
+  // 섬네일 gif 이미지 적용
+  $('.projects-list a img').mouseover(function(){
+    $(this).attr('src', $(this).data('animated'));
+  });
+  $('.projects-list a img').mouseout(function(){
+    $(this).attr('src', $(this).data('static'));
   });
 
   //modal
