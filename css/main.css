@@ -165,6 +165,7 @@ header nav a.active {font-family: 'VitroCore';}
 #projects .swiper-slide .img-box::before {content: ''; background: rgb(0,0,0,.5); background: linear-gradient(0deg, rgba(0,0,0,.9) 0%, transparent 60%); width: 100%; height: 100%; display: inline-block; position: absolute; left: 0; bottom: 0; z-index: 1;}
 #projects .swiper-slide .img-box img {filter:grayscale(1) contrast(1.4); position: absolute; width: 100%; height: 100%; position: absolute; left: 0; top: 0; object-fit: cover; opacity: .6; }
 #projects .swiper-slide:hover .img-box img {filter:grayscale(0); opacity: 1;}
+#projects .swiper-slide:hover .img-box.gif::before {z-index: 0;}
 #projects .swiper-slide .desc {color: var(--color-white); position: absolute; left: 2.8rem; bottom: 2.8rem; font-size: 2.8rem; font-family: 'KBODiaGothicLight'; line-height: 1.2; opacity: 0.7; z-index: 2;}
 #projects .projects-list a:hover .desc {opacity: 1;}
 #projects .tag {width: 15rem; height: 6rem; background: var(--main-bg-color); color: var(--color-white); border-radius: 0 0 0 4rem; position: absolute; top: 0; right: 0; line-height: 2.8; text-align: center; font-family: 'KBODiaGothicLight'; font-size: 2rem;}
@@ -274,7 +275,7 @@ body.modal-active {display: flex; overflow: hidden;}
 }
 
 /* contact */
-#contact {background-color: var(--main-bg-color); padding-top: 9rem; margin-top: -10rem;}
+#contact {background-color: var(--main-bg-color); padding: 9rem 0 7rem; margin-top: -10rem;}
 #contact .container {position: relative;}
 #contact h2 {position: relative; display: flex; justify-content: flex-start; align-items: center; color: var(--color-white); padding: 2rem 0; z-index: 2; }
 #contact .tit-wrap {position: relative;}
@@ -284,8 +285,15 @@ bottom: 0; width: 41rem; height: 100%; background-color: var(--main-bg-color); z
 /* #contact h2::after {content: ''; position: absolute; right: 0; top: 63%; width: calc(100% - 41rem); height: .8rem; background-color: #fff;} */
 #contact h2 span {background: url('../img/tit_03.svg') 0 50% no-repeat; background-size: contain; width: 37rem; height: 19rem; margin: -6.7rem -14rem 0 0;}
 #contact .tit-wrap ~ p {color: var(--color-primary); font-size:3.2rem;}
-#contact .tit-wrap + p {padding-top: 2rem; color: var(--color-white); }
+#contact .tit-wrap + p {padding-top: 5rem; color: var(--color-white); }
 #contact p {margin-top: 1rem;}
+#contact .btn-area {display: flex; align-items: center; margin-top: 4rem; gap: 4rem;}
+#contact .btn-area button {cursor: pointer; text-indent: -9999px; transition: var(--transition);}
+#contact .btn-area button:hover {background-position: 50% 100%;}
+#contact .btn-area .btn-email {width: 7.8rem; height: 6.5rem; background: url('../img/ico_mail.png') 50% 0% no-repeat;}
+#contact .btn-area .btn-instagram {width: 7.3rem; height: 7.3rem; background: url('../img/ico_insta.png') 50% 0% no-repeat;}
+#contact .btn-area .btn-youtube {width: 7.8rem; height: 6.5rem; background: url('../img/ico_youtube.png') 50% 0% no-repeat;}
+
 
 #goTop {width: 11rem; height: 11rem; background-color: var(--main-bg-color); color: var(--color-white); border: 2px solid var(--color-darkgray); /*position: fixed; bottom: 2rem; right: 2rem; z-index: 99;*/ position: absolute; right: 0; bottom: 0; text-indent: -9999px; transition: var(--transition); z-index: 9;}
 #goTop:hover {border-color: var(--color-primary);} 
