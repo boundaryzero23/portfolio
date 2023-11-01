@@ -79,7 +79,7 @@
 
 /* ============== MAIN ============== */
 /* mobile-btn Area */
-.mobile-btn {position: fixed; right: 2%; top: 2.6em; width: 32px; height: 28px; z-index: 999; display: none; align-items: center; mix-blend-mode: difference;
+.mobile-btn {position: fixed; right: 4%; top: 2.6em; width: 32px; height: 28px; z-index: 999; display: none; align-items: center; mix-blend-mode: difference;
 justify-content: center; background-color: transparent;padding: 0; cursor: pointer; border: none;}
 .mobile-btn.blend-mode-screen {mix-blend-mode: screen;}
 .mobile-btn i {width: 100%; height: 4px; display: block;position: relative; margin: 0 auto; background-color: var(--color-white);}
@@ -96,7 +96,7 @@ justify-content: center; background-color: transparent;padding: 0; cursor: point
 .nav-mobile {position: fixed; top: 0; right: -100vw; width: 100vw; height: 100vh; z-index: 98; background-color: var(--main-bg-color); display: flex; justify-content: center; align-items: center; /* flex-direction: column; */ flex-wrap: wrap;}
 .nav-mobile.active {right:0;}
 .nav-mobile .menu-mobile {width: 100%; margin-top: 7vw;}
-.nav-mobile .menu-mobile li {height: 6.4rem; display: flex; justify-content: center; align-items: center; }
+.nav-mobile .menu-mobile li {height: 7.4rem; display: flex; justify-content: center; align-items: center; }
 .nav-mobile .menu-mobile li a {display:block; width: 100%; text-align: center; color: var(--color-white); font-family: 'VitroPride'; font-size: 3.2rem; opacity: 0.5; transition: var(--transition);}
 .nav-mobile .menu-mobile li a:hover {opacity: 1; font-family: 'VitroCore'; }
 .nav-mobile .menu-mobile li.active a {color: var(--color-white);}
@@ -241,7 +241,7 @@ body.modal-active {display: flex; overflow: hidden;}
   /* background-color: #0cc9be; */
   background-image: url('../img/bg_about_1.png'), -webkit-linear-gradient(35deg, #0cc9be 0%, #2ae5c0 100%); 
   background-image: url('../img/bg_about_1.png'), linear-gradient(35deg, #0cc9be 0%, #2ae5c0 100%); 
-  background-position: right bottom; background-repeat: no-repeat; background-size: contain; background-blend-mode: multiply; font-family: 'KBODiaGothicLight'; font-size: 1.1vw; position: relative; padding: 11rem 0;}
+   background-repeat: no-repeat; background-position: right 40%; background-size: cover; background-blend-mode: multiply; font-family: 'KBODiaGothicLight'; font-size: 1.1vw; position: relative; padding: 7rem 0 11rem;}
 #about .container {position: relative;}
 #about p {margin-bottom: 2rem;}
 #about strong {font-weight: bold;}
@@ -275,7 +275,7 @@ body.modal-active {display: flex; overflow: hidden;}
 }
 
 /* contact */
-#contact {background-color: var(--main-bg-color); padding: 9rem 0 7rem; margin-top: -10rem;}
+#contact {background-color: var(--main-bg-color); padding: 9rem 0 7rem; margin-top: -10rem; position: relative;}
 #contact .container {position: relative;}
 #contact h2 {position: relative; display: flex; justify-content: flex-start; align-items: center; color: var(--color-white); padding: 2rem 0; z-index: 2; }
 #contact .tit-wrap {position: relative;}
@@ -287,13 +287,31 @@ bottom: 0; width: 41rem; height: 100%; background-color: var(--main-bg-color); z
 #contact .tit-wrap ~ p {color: var(--color-primary); font-size:3.2rem;}
 #contact .tit-wrap + p {padding-top: 5rem; color: var(--color-white); }
 #contact p {margin-top: 1rem;}
-#contact .btn-area {display: flex; align-items: center; margin-top: 4rem; gap: 4rem;}
-#contact .btn-area button {cursor: pointer; text-indent: -9999px; transition: var(--transition);}
+#contact .btn-area {margin-top: 4rem;}
+#contact .btn-area button {cursor: pointer; text-indent: -9999px; transition: var(--transition); display: inline-block; vertical-align: middle; margin-right: 3rem;}
 #contact .btn-area button:hover {background-position: 50% 100%;}
 #contact .btn-area .btn-email {width: 7.8rem; height: 6.5rem; background: url('../img/ico_mail.png') 50% 0% no-repeat;}
 #contact .btn-area .btn-instagram {width: 7.3rem; height: 7.3rem; background: url('../img/ico_insta.png') 50% 0% no-repeat;}
 #contact .btn-area .btn-youtube {width: 7.8rem; height: 6.5rem; background: url('../img/ico_youtube.png') 50% 0% no-repeat;}
 
+#email {position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1000; display: none; background: var(--main-bg-color);  border: 2px solid var(--color-lightgray); border-radius: 2rem; }
+#email.active {display: block;}
+#email form {width: 47rem; height: 43rem; padding: 5rem 4rem 3rem; color: var(--color-lightgray); font-size: 1.6rem; text-align: right;}
+#email form * {font-size: 1.6rem; font-family: 'KBODiaGothicLight';}
+#email form p {display: flex; justify-content: space-between; align-items: center;margin: 1.6rem 0;}
+#email form label {flex-basis: 12%; font-family: 'KBODiaGothicMedium'; color: var(--color-lightgray);}
+#email form input, #email form textarea {flex-basis: 82%; padding: 1rem; border-radius: .7rem; border: none; line-height: 1.4; color: var(--color-lightgray); background: var(--color-darkgray);}
+#email form input:focus, #email form textarea:focus {background: var(--main-bg-color);}
+#email form div input {display: inline-block; cursor: pointer; margin-left: 1rem; padding: 1rem 2rem; background-color: var(--main-bg-color);}
+#email form div input[type='reset'] {border: 1px solid var(--color-darkgray); color: var(--color-lightgray); margin-left: 0;}
+#email form div input[type='reset']:hover {border-color: var(--color-lightgray);}
+#email form div input[type='submit'] {background-color: var(--color-primary); color: var(--color-black); height: 4.1rem; opacity: .9;}
+#email form div input[type='submit']:hover {/* background-color: var(--color-white);  */ opacity: 1;}
+#email .btn-close {width: 18px; height: 18px; background: url('../img/btn_close.png') 50% no-repeat; background-size: cover; cursor: pointer; text-indent: -9999px; position: absolute; right: 4rem; top: 2.4rem; z-index: 2;}
+
+/* 레이어 마스크 영역 */
+.layer-mask {position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background-color: rgba(0, 0, 0); z-index: 999; opacity: 0; visibility: hidden; transition: var(--transition);}
+.layer-mask.active {opacity: 0.9; visibility: visible;}
 
 #goTop {width: 11rem; height: 11rem; background-color: var(--main-bg-color); color: var(--color-white); border: 2px solid var(--color-darkgray); /*position: fixed; bottom: 2rem; right: 2rem; z-index: 99;*/ position: absolute; right: 0; bottom: 0; text-indent: -9999px; transition: var(--transition); z-index: 9;}
 #goTop:hover {border-color: var(--color-primary);} 
@@ -353,6 +371,7 @@ footer .copyright {opacity: .6; font-size: 1.7rem;}
   /* overflow: hidden;*/ mix-blend-mode: multiply; 
   width: 100%;
   height: 100%;}
+.spline iframe {width: 100%; height: 100%; border: none;}
 
 .scroll_icon {position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); height: 10rem;text-align: center; font-size: 1rem; z-index: 90; border-radius: 1rem 3rem 0 0; padding: 1rem; display: flex; flex-direction: column; justify-content: center;}
 .scroll_icon img {width: 60%;}

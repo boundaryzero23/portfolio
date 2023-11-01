@@ -4,7 +4,7 @@
   .container {width: 94%;}
   header .container {height: 13rem;}
 
-  #visual {padding:12vw 0 5vw; height: 48vw;}
+  #visual {padding:12vw 0 5vw; height: 51vw;}
 
   #projects .swiper-outer .btn-prev {transform: translate(45%, -50%) scale(.86); }
   #projects .swiper-outer .btn-next {transform: translate(-55%, -50%) scale(.86);}
@@ -74,15 +74,18 @@
   header .logo {width: 10.7rem; height: 4.7rem;}
   header nav {display: none;}
 
-  #visual {padding:20vw 0 5vw; height: 62vw; }
+  #visual {padding:11vw 0 5vw; height: 52vw; }
   #visual .container h3 {font-size: 3.9vw; }
-  .spline::after {content: '';
+  .spline {background: url('../img/3d.gif') 50% 0 no-repeat; background-size: 110%;}
+  /* .spline::after {content: '';
     position: absolute;
     width: 100%;
     height: 62vw;
-    background: url(../img/3d.gif) no-repeat;
-    background-size: cover;}
-  .spline iframe {display: none;}
+    background: url('../img/3d.gif') no-repeat;
+    background-size: cover;} */
+    
+    /* .spline canvas {width: 0 !important; height: 0 !important;} */
+  /* .spline iframe {display: none; visibility: hidden;} */
 
   #projects h2 {margin-left: 0; transform: scale(.75);}
   #projects nav {width: 100%; z-index: 3;}
@@ -117,14 +120,18 @@
 @media screen and (max-width:960px) {
   h3 {font-size: 3.8rem;}
   p, #about ul li {font-size: 1.7rem;}
-  #visual h3 {font-size: 4rem;}
 
+  #visual {padding-top: 18vw; height: 57vw;}
+  #visual h3 {font-size: 4rem;}
+  .spline {background-size: 121%;}
+
+  #about {background-position: -30% 40%;}
   #about .text {bottom: -19rem;}
 
   #skill {padding-top: 6rem;}
 
-  #contact .btn-area {gap: 2rem;}
-  #contact .btn-area button {transform: scale(.9); transform-origin: left center;}
+  #contact .btn-area {margin-top: 1rem;}
+  #contact .btn-area button {transform: scale(.8); transform-origin: left center; margin-right: 1rem;}
 
   #goTop {transform: scale(.8); transform-origin: right bottom; }
 }
@@ -133,10 +140,12 @@
   .section {padding: 4rem 0 16rem;}
   .mobile-btn {top: 2em;}
   header .container {height: 9rem;}
-  #visual {padding:25vw 0 5vw; height: 69vw; }
+
+  #visual {padding:17vw 0 5vw; height: 59vw; }
   #visual h3 {font-size: 4.5vw; }
   #visual .text-box {height: 50vw;}
-  .spline::after {height: 69vw;}
+  .spline {background-size: 125%;}
+  /* .spline::after {height: 69vw;} */
   
   #projects h2 {transform: scale(.55);}
   #projects nav {width: 75%;}
@@ -169,9 +178,9 @@
   /* #contact {margin-top: -18rem;} */
   #contact h2 {transform: scale(.55);}
   #contact .tit-wrap::before {width: 23rem;}
-  #contact .tit-wrap::after {top: 82%; height: 0.6rem;}
+  #contact .tit-wrap::after {top: 82%; height: 0.5rem;}
 
-  footer .logo {width: 29vw; height: 7vw;}
+  footer .logo {width: 35vw; height: 12vw;}
   footer .info p {font-size: 1rem;}
 
   #modal .video-area .video {padding-top: 75%;}
@@ -181,6 +190,10 @@
   .section {padding: 4rem 0 8rem;}
   .container {width: 90%;}
   h3 {font-size: 3.2rem;}
+
+  #visual {padding: 25vw 0 5vw; height: 75vw;}
+  .spline {background: url('../img/3d.gif') left top no-repeat, url('../img/3d.gif') right top no-repeat; background-size: 159%;}
+
   #projects h2 {transform-origin: left top;}
   #projects nav {width: 100%;}
   .tabMenu {justify-content: center;}
@@ -204,9 +217,9 @@
 
   /* #contact {margin-top: -13rem;} */
   #contact .tit-wrap ~ p {font-size: 1.5rem;}
-  #contact .tit-wrap + p {font-size: 1.7rem;}
-  #contact .btn-area {margin-top: 2rem; gap: 1rem;}
-  #contact .btn-area button {transform: scale(.8);}
+  #contact .tit-wrap + p {font-size: 1.7rem; padding-top: 3rem;}
+  /* #contact .btn-area {margin-top: 2rem;} */
+  #contact .btn-area button {transform: scale(.7); margin-right: -1rem;}
 
   footer .container {flex-direction: column-reverse; gap: 1rem; align-items: flex-start;}
   footer .logo {background-position: 0% 50%;}
@@ -225,17 +238,28 @@
 @media screen and (max-width:560px) {
   /* #visual {padding: 40vw 0 5vw; height: 100vw;}
   #visual .text-box {height: 60vw;} */
+  #visual {padding-top: 27vw;}
 
   #projects .tag {font-size: 1.5rem; height: 4.4rem; line-height: 4.4rem;}
   #projects .swiper-slide .desc {font-size: 2rem;}
 
+  #about {background-position: 10% 130%;}
   #about h2 {transform: scale(.65);}
-  #about p, #about ul li {font-size: 3.7vw;}
+  #about p {font-size: 3.4vw;}
+  #about ul li {font-size: 3.1vw;}
 
-  #skill .sticker-wrap {max-width: 70%;}
+  #skill .sticker-wrap {max-width: 75%;}
 
-  #contact .btn-area {/* margin-top: 2rem;  */gap: 0;}
   #contact .btn-area button {transform: scale(.7);}
+
+  #email {width: 90%; }
+  #email form {width: 100%; height: auto; text-align: left; padding: 1rem 3rem 2rem;}
+  #email form p {align-items: flex-start; flex-direction: column; margin: 1rem 0;}
+  #email form label {margin: 1rem 0 .5rem;}
+  #email form label,  #email form input,  #email form textarea {width: 100%;}
+  #email form div {margin: 1rem 0; text-align: center;}
+  #email form div input {width: 13rem; text-align: center;}
+  #email .btn-close {width: 16px; height: 16px; right: 2rem; top: 2rem;}
 
   /* #modal.light .inner {padding-top: 10rem;} */
   #modal.light h2 span {margin-right: .3rem;}
@@ -247,6 +271,11 @@
 }
 @media screen and (max-width:440px) {
   .nav-mobile .menu-mobile li a {font-size: 2.8rem;}
+
+  #visual {height: 100vw; padding-top: 40vw;}
+  #visual .text-box {height: 60vw;}
+  .spline {background: url('../img/3d.gif') 14% top no-repeat, url('../img/3d.gif') 90% top no-repeat; background-size: 209%;}
+
   #projects h2 {transform: scale(.45);}
   #about h2 {transform: scale(.75);}
 
@@ -255,8 +284,8 @@
   #contact h2 span {width: 86vw; margin-right: -9rem;}
   #contact .tit-wrap::before {width: 58%;}
   #contact .tit-wrap::after {top: 79%;}
-  #contact .btn-area {width: 10rem;}
-  #contact .btn-area button {transform: scale(.6);}
+  #contact .btn-area {margin-top: 0;}
+  #contact .btn-area button {transform: scale(.5); margin-right: -2rem;}
   
   /* #contact h2 {font-size: 26vw;}
   #contact .tit-wrap::before {width: 54vw;} */
