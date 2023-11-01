@@ -165,7 +165,7 @@ header nav a.active {font-family: 'VitroCore';}
 #projects .swiper-slide .img-box::before {content: ''; background: rgb(0,0,0,.5); background: linear-gradient(0deg, rgba(0,0,0,.9) 0%, transparent 60%); width: 100%; height: 100%; display: inline-block; position: absolute; left: 0; bottom: 0; z-index: 1;}
 #projects .swiper-slide .img-box img {filter:grayscale(1) contrast(1.4); position: absolute; width: 100%; height: 100%; position: absolute; left: 0; top: 0; object-fit: cover; opacity: .6; }
 #projects .swiper-slide:hover .img-box img {filter:grayscale(0); opacity: 1;}
-#projects .swiper-slide:hover .img-box.gif::before {z-index: 0;}
+#projects .swiper-slide a:hover .img-box.gif::before {z-index: 0;}
 #projects .swiper-slide .desc {color: var(--color-white); position: absolute; left: 2.8rem; bottom: 2.8rem; font-size: 2.8rem; font-family: 'KBODiaGothicLight'; line-height: 1.2; opacity: 0.7; z-index: 2;}
 #projects .projects-list a:hover .desc {opacity: 1;}
 #projects .tag {width: 15rem; height: 6rem; background: var(--main-bg-color); color: var(--color-white); border-radius: 0 0 0 4rem; position: absolute; top: 0; right: 0; line-height: 2.8; text-align: center; font-family: 'KBODiaGothicLight'; font-size: 2rem;}
