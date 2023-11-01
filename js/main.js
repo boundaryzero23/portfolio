@@ -220,10 +220,10 @@ $(function(){
   // swiper
   const swiper = new Swiper('.projects-list', {
     // loop: true,
-    // autoplay: {
-    //   delay: 2000,
-    //   disableOnInteraction: false,
-    // },
+    autoplay: {
+      delay: 2000,
+      disableOnInteraction: false,
+    },
     slideToClickedSlide: true,
     // allowTouchMove: false,
     // slidesPerView: 4,
@@ -376,9 +376,24 @@ $(function(){
     $('#modal h2').remove();
     $('.modal-footer').remove();
   });
-  
 
- 
+  // 이메일창
+  const email = $('#email');
+  $('#contact .btn-email').click(function(){
+    email.addClass('active');
+    $('body').addClass('modal-active');
+    $('.layer-mask').addClass('active');
+  });
+  $('#email .btn-sendmail').click(function(){
+    // email.removeClass('active');
+    $('body').removeClass('modal-active');
+    $('.layer-mask').removeClass('active');
+  });
+  $('#email .btn-close').click(function(){
+    email.removeClass('active');
+    $('body').removeClass('modal-active');
+    $('.layer-mask').removeClass('active');
+  });
 });
 
 AOS.init({
