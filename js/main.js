@@ -1,4 +1,22 @@
 $(function(){
+  // 영상 gif 이미지 불러오기
+  let images = [];
+
+  function preload() {
+    for(let i = 0; i < preload.arguments.lenght; i++) {
+      images[i] = new Image();
+      images[i].src = preload.arguments.src;
+    }
+  }
+
+  preload(
+    "../img/thumb_motion_1.gif",
+    "../img/thumb_motion_2.gif",
+    "../img/thumb_motion_3.gif",
+    "../img/thumb_motion_4.gif",
+    "../img/thumb_motion_5.gif",
+  )
+
   // intro
   $('#wrap').hide();
   setTimeout(function(){
