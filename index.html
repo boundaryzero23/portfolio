@@ -476,15 +476,7 @@
                 <div class="swiper projects-list">
                   <ul class="swiper-wrapper">
                     <!-- Slides -->
-                    <li class="swiper-slide">
-                      <a href="#">
-                        <div class="img-box">
-                          <img src="" alt="">
-                        </div>
-                        <div class="desc">캐릭터 애니메이션<br> HEAD RIG</div>
-                        <div class="tag"><span>MOTION</span></div>
-                      </a>
-                    </li>
+                    <li class="swiper-slide">Slide 1</li>
                     <li class="swiper-slide">Slide 2</li>
                     <li class="swiper-slide">Slide 3</li>
                     <li class="swiper-slide">Slide 4</li>
@@ -624,6 +616,38 @@
           <!-- <p>boundaryzero23@gmail.com</p> -->
           <button type="button" id="goTop">위로 이동</button>
         </div>
+
+        <!-- email -->
+        <div id="email">
+          <form id="fs-frm" name="simple-contact-form" accept-charset="utf-8" action="https://formspree.io/f/xdorjogl" method="post">
+            <fieldset id="fs-frm-inputs">
+              <p>
+                <label for="full-name">이름</label>
+                <input type="text" name="name" id="full-name" placeholder="이름을 입력하세요" required="" autocomplete="off">
+              </p>
+              <p>
+                <label for="email-address">이메일</label>
+                <input type="email" name="replyto" id="email-address" placeholder="예) email@example.com" required="" autocomplete="off">
+              </p>
+              <p>
+                <label for="subject">제목</label>
+                <input type="text" name="subject" id="subject" placeholder="제목을 입력하세요" required="" autocomplete="off">
+              </p>
+              <p>
+                <label for="message">내용</label>
+                <textarea rows="3" name="message" id="message" placeholder="내용을 입력하세요" required="" autocomplete="off"></textarea>
+              </p>
+              <input type="hidden" name="_subject" id="email-subject" value="Contact Form Submission">
+            </fieldset>
+            <div>
+              <input type="reset" value="다시 작성하기">
+              <input type="submit" value="메일 보내기" class="btn-sendmail">
+            </div>
+          </form>
+          <button type="button" class="btn-close">창닫기</button>
+        </div>
+        <div class="layer-mask"></div>
+        <!--// email -->
       </section>
       <!--// contact -->
     </main>
@@ -653,8 +677,9 @@
     <button type="button" class="btn-close">창닫기</button>
   </div>
 
+  <!-- 3d -->
   <div class="spline">
-    <iframe src="3d/index.html" frameborder="0" width="100%" height="100%" allowtransparency="true"></iframe>
+    <iframe src="3d/index.html"></iframe>
   </div>
 
   <!-- jQuery -->
