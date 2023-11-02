@@ -251,8 +251,21 @@ body.modal-active {display: flex; overflow: hidden;}
 #about h2 span {background: url('../img/tit_02.svg') 0 50% no-repeat; background-size: contain; width: 54rem; height: 25rem; margin: -5rem 1rem 0 0; text-indent: -9999px;}
 #about .text {width: 69rem; font-size: 13rem; position: absolute; bottom: -6rem; right: 0; color: var(--color-white); line-height: 1; display: flex; justify-content: space-between; align-items: center; font-family: 'KBODiaGothicMedium';}
 #about .text span {width: 26rem;}
-#about .text span:nth-child(2) {width: 21rem; height: 21rem; background: url('../img/txt_01.svg') 50% no-repeat; background-size: contain; text-indent: -9999px;}
+#about .text span:nth-child(2) {width: 21rem; height: 21rem; }
 #about .text span:last-child {text-align: right;}
+#about .text .txt-and .path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: dash 4s linear alternate infinite;
+}
+@keyframes dash {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: 1000;
+  }
+}
 
 /* skill */
 #skill {background-color: var(--main-bg-color);}
