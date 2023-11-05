@@ -220,10 +220,10 @@ $(function(){
   // swiper
   const swiper = new Swiper('.projects-list', {
     // loop: true,
-    autoplay: {
-      delay: 2000,
-      disableOnInteraction: false,
-    },
+    // autoplay: {
+    //   delay: 2000,
+    //   disableOnInteraction: false,
+    // },
     slideToClickedSlide: true,
     // allowTouchMove: false,
     // slidesPerView: 4,
