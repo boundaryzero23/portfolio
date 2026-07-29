@@ -203,11 +203,7 @@ $(function(){
   tabSlider = $('.swiper-outer > div');
   tabMenu.click(function(e){
     e.preventDefault();  
-    if($(this).index() == 4) {
-      // 비디오 카테고리 포트폴리오 준비 중
-      alert('준비 중입니다.')
-    }else{
-      // 나머지 카테고리
+    {
       tabMenu.removeClass('active');
       $(this).addClass('active');
       tabSlider.hide();
@@ -221,7 +217,7 @@ $(function(){
   const swiper = new Swiper('.projects-list', {
     // loop: true,
     autoplay: {
-      delay: 2000,
+      delay: 3000,
       disableOnInteraction: false,
     },
     slideToClickedSlide: true,
@@ -278,27 +274,78 @@ $(function(){
     // 툴 정보 가져오기
     const tools = $(this).find('.desc').data('tools');
 
-    if(hasVideo) {
+    if (hasVideo) {
+
       $('#modal').removeClass('light');
       $('#modal').addClass('dark');
+
+      const video = $(this).data('video');
+      let iframeSrc = '';
+
+      // Google Drive인 경우
+      if (typeof video === 'string' && video.includes('drive.google.com')) {
+
+        const fileId = video.match(/\/d\/([^/]+)/)[1];
+        iframeSrc = `https://drive.google.com/file/d/${fileId}/preview?autoplay=1`;
+
+      } else {
+
+        // 그 외에는 모두 YouTube ID로 간주
+        iframeSrc = `https://www.youtube.com/embed/${video}?rel=0&playsinline=1&autoplay=1`;
+      }
 
       $('#modal .modal-cont').prepend(`
         <div class="video-area">
           <div class="video">
-            <iframe src="https://www.youtube.com/embed/${$(this).data('video')}?rel=0&playsinline=1&autoplay=1" frameborder="0" name="" allowfullscreen></iframe>
+            <iframe
+              src="${iframeSrc}"
+              frameborder="0"
+              allow="autoplay; fullscreen"
+              allowfullscreen>
+            </iframe>
           </div>
         </div>
+
         <div class="info-area">
           <h2>${projectTit}</h2>
+
           <div class="tools">
-            <img src="img/tool/ico_${tools}.png" alt="${tools}" title="${tools}">
+            <img src="img/tool/ico_${tools}.png"
+                alt="${tools}"
+                title="${tools}">
           </div>
+
           <div class="desc">${projectDesc}</div>
         </div>
       `);
-     }else{
+
+    } else {
+
       $('#modal').removeClass('dark');
       $('#modal').addClass('light');
+
+    // if(hasVideo) {
+    //   $('#modal').removeClass('light');
+    //   $('#modal').addClass('dark');
+
+    //   $('#modal .modal-cont').prepend(`
+    //     <div class="video-area">
+    //       <div class="video">
+    //         <iframe src="https://www.youtube.com/embed/${$(this).data('video')}?rel=0&playsinline=1&autoplay=1" frameborder="0" name="" allowfullscreen></iframe>
+    //       </div>
+    //     </div>
+    //     <div class="info-area">
+    //       <h2>${projectTit}</h2>
+    //       <div class="tools">
+    //         <img src="img/tool/ico_${tools}.png" alt="${tools}" title="${tools}">
+    //       </div>
+    //       <div class="desc">${projectDesc}</div>
+    //     </div>
+    //   `);
+    //  }else{
+    //   $('#modal').removeClass('dark');
+    //   $('#modal').addClass('light');
+
       // alert('비디오 없음');
       // View 정보 가져오기
       const viewNum = $(this).find('.desc').data('view');
