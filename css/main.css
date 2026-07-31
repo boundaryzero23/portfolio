@@ -121,7 +121,7 @@ header nav a.active {font-family: 'VitroCore';}
 /* visual */
 #visual {background-color: #fff; padding: 9vw 0 5vw; overflow: hidden; height: 44vw; position: relative;}
 #visual .head-copy {position: relative;}
-#visual .head-copy video {width: 100%; filter:brightness(0.6) hue-rotate(300deg) contrast(2);}
+#visual .head-copy video {width: 100%; filter:brightness(0.67) hue-rotate(45deg) contrast(2);}
 #visual .head-copy h2 {font-family: 'KBODiaGothicBold'; overflow: hidden; padding: 0; }
 #visual .text-box {position: absolute; top: 0; left: 0; width: 100%; height: 48vw; background-color: #fff; color: #000; display: flex; justify-content: center; align-items: flex-start; mix-blend-mode: screen;}
 #visual h2 span {font-family: 'KBODiaGothicBold'; display: inline-block; color: var(--color-darkgray); font-size: 27vw; line-height: 24vw; white-space: nowrap; text-transform: uppercase; margin-left: -8vw; }
