@@ -3,9 +3,9 @@ $(function(){
   let images = [];
 
   function preload() {
-    for(let i = 0; i < preload.arguments.lenght; i++) {
+    for(let i = 0; i < preload.arguments.length; i++) {
       images[i] = new Image();
-      images[i].src = preload.arguments.src;
+      images[i].src = preload.arguments[i];
     }
   }
 
@@ -15,6 +15,15 @@ $(function(){
     "../img/thumb_motion_3.gif",
     "../img/thumb_motion_4.gif",
     "../img/thumb_motion_5.gif",
+    "../img/thumb_video_1.gif",
+    "../img/thumb_video_2.gif",
+    "../img/thumb_video_3.gif",
+    "../img/thumb_video_4.gif",
+    "../img/thumb_video_5.gif",
+    "../img/thumb_video_6.gif",
+    "../img/thumb_video_7.gif",
+    "../img/thumb_video_8.gif",
+    "../img/thumb_video_9.gif",
   )
 
   // intro
@@ -206,47 +215,115 @@ $(function(){
     {
       tabMenu.removeClass('active');
       $(this).addClass('active');
-      tabSlider.hide();
+
       const tabTarget = $(this).find('a').attr('href');
+      const tabId = tabTarget.replace('#', '');
+      const currentSwiper = swipers[tabId];
+
+      // 화면에 보이지 않게 될 모든 swiper의 autoplay를 먼저 정지
+      // (숨겨진 상태로 계속 돌면 폭 계산이 꼬여서 다음에 보일 때 재생이 안되거나 랜덤하게 깨짐)
+      Object.keys(swipers).forEach(function(id) {
+        const sw = swipers[id];
+        if (id !== tabId && sw.autoplay && sw.autoplay.running) {
+          sw.autoplay.stop();
+        }
+      });
+
+      tabSlider.hide();
       $(tabTarget).show();
+
+      // 컨테이너가 실제로 화면에 표시된 다음 프레임에서
+      // 크기를 다시 계산하고 autoplay를 재시작 (한 번만 수행하여 레이스 컨디션 제거)
+      requestAnimationFrame(() => {
+        currentSwiper.update();
+        currentSwiper.updateSlides();
+        currentSwiper.updateSize();
+        currentSwiper.autoplay.start();
+      });
     }
   });
-  tabMenu.eq(0).trigger('click');
+
+  // ALL 탭 슬라이드 자동 생성
+  // WEB/APP, GRAPHIC, MOTION, VIDEO 탭에 있는 슬라이드를 그대로 복제해서
+  // #tabs-1(ALL)에 채워 넣는다. 이렇게 하면 각 카테고리 리스트만 관리하면 되고,
+  // ALL 탭 내용을 별도로 손으로 유지보수할 필요가 없다.
+  const $allWrapper = $('#tabs-1 .swiper-wrapper');
+  $allWrapper.empty();
+
+  // 1) 4개 카테고리의 슬라이드를 하나의 배열로 모으기
+  let allSlides = [];
+  ['#tabs-2', '#tabs-3', '#tabs-4', '#tabs-5'].forEach(function (tabSelector) {
+    $(tabSelector).find('.swiper-slide').each(function () {
+      // true, true: 이벤트 핸들러와 data()까지 함께 복제
+      allSlides.push($(this).clone(true, true));
+    });
+  });
+
+  // 2) Fisher-Yates 셔플로 카테고리 순서가 아니라 무작위 순서로 섞기
+  for (let i = allSlides.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [allSlides[i], allSlides[j]] = [allSlides[j], allSlides[i]];
+  }
+
+  // 3) 섞인 순서대로 wrapper에 추가
+  allSlides.forEach(function ($slide) {
+    $allWrapper.append($slide);
+  });
 
   // swiper
-  const swiper = new Swiper('.projects-list', {
-    // loop: true,
-    autoplay: {
-      delay: 3000,
-      disableOnInteraction: false,
-    },
-    slideToClickedSlide: true,
-    // allowTouchMove: false,
-    // slidesPerView: 4,
-    // spaceBetween: 30,
-    navigation: {
-      nextEl: ".btn-next",
-      prevEl: ".btn-prev",
-    },
-    breakpoints: {
-      0: {
-        slidesPerView: 1,
-        spaceBetween: 28,
-      },
-      768: {
-        slidesPerView: 2,
-        spaceBetween: 28,
-      },
-      1024: {
-        slidesPerView: 2,
-        spaceBetween: 28,
-      },
-      1560: {
-        slidesPerView: 3,
-        spaceBetween: 28,
-      }
-    }
-  });
+  const swipers = {};
+
+$('.projects-list').each(function () {
+
+    const $wrap = $(this).closest('.swiper-outer > div');
+    // 이 swiper가 속한 tab의 id (예: "tabs-2")
+    const tabId = $wrap.attr('id');
+
+    const swiper = new Swiper(this, {
+
+        observer: true, // DOM 변경 감지 활성화
+        observeParents: true, // 부모 요소의 변경 감지 활성화
+        
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
+
+        slideToClickedSlide: true,
+
+        navigation: {
+            nextEl: $wrap.find('.btn-next')[0],
+            prevEl: $wrap.find('.btn-prev')[0],
+        },
+
+        breakpoints: {
+            0: {
+                slidesPerView: 1,
+                spaceBetween: 28,
+            },
+            768: {
+                slidesPerView: 2,
+                spaceBetween: 28,
+            },
+            1024: {
+                slidesPerView: 2,
+                spaceBetween: 28,
+            },
+            1560: {
+                slidesPerView: 3,
+                spaceBetween: 28,
+            }
+        }
+
+    });
+
+    swipers[tabId] = swiper;
+
+});
+
+  // 모든 swiper가 생성된 이후에 첫 번째 탭을 활성화해야
+  // 탭 클릭 핸들러 안에서 swipers 객체를 안전하게 참조할 수 있음
+  tabMenu.eq(0).trigger('click');
 
   // 섬네일 gif 이미지 적용
   $('.projects-list a img').mouseover(function(){
