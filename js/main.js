@@ -518,39 +518,6 @@ $('.projects-list').each(function () {
     $('body').removeClass('modal-active');
     $('.layer-mask').removeClass('active');
   });
-
-  // 3D 씬 마우스 연동
-  // .spline iframe은 pointer-events: none 상태라 마우스 이벤트를 직접 받지 못한다.
-  // (그래야 첫 번째 섹션 위에서도 페이지 스크롤/우클릭이 정상 동작함)
-  // 대신 부모 페이지가 마우스 위치를 감지해서 iframe 안으로 전달해준다.
-  const splineFrame = document.querySelector('.spline iframe');
-
-  if (splineFrame) {
-    let ticking = false;
-    let lastX = 0, lastY = 0;
-
-    window.addEventListener('mousemove', function (e) {
-      lastX = e.clientX;
-      lastY = e.clientY;
-
-      // 매 프레임에 한 번만 전달해서 postMessage 과다 호출 방지
-      if (ticking) return;
-      ticking = true;
-
-      requestAnimationFrame(function () {
-        ticking = false;
-        if (!splineFrame.contentWindow) return;
-
-        splineFrame.contentWindow.postMessage({
-          type: 'parentMouseMove',
-          x: lastX,
-          y: lastY,
-          ratioX: lastX / window.innerWidth,
-          ratioY: lastY / window.innerHeight
-        }, '*');
-      });
-    });
-  }
 });
 
 AOS.init({
