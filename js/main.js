@@ -158,7 +158,7 @@ $(function(){
     // 비주얼 영역일 때 스크롤 숨김
     const visual = $('#visual');
     // console.log(visual.offset().top, $(window).scrollTop());
-    if($(window).scrollTop() == 0) {
+    if($(window).scrollTop() <= 0) {
       $('.wrap').removeClass('active');
     }
     if($('header').hasClass('blend-mode-screen')) {
@@ -390,6 +390,11 @@ $('.projects-list').each(function () {
   //modal > open
   $(projectEl).click(function(e){
     e.preventDefault();
+    // 모달이 열려 있는 동안에는 슬라이드 자동재생을 멈춘다
+    if (swipers[currentTabId]) {
+      swipers[currentTabId].autoplay.stop();
+    }
+
     $('body').addClass('modal-active');
     $('#modal').addClass('active');
 
@@ -551,6 +556,12 @@ $('.projects-list').each(function () {
     $('.modal-cont > div').remove();
     $('#modal h2').remove();
     $('.modal-footer').remove();
+
+    // 모달을 닫으면 자동재생을 이어서 시작한다.
+    // 단, #projects 영역이 화면에 보일 때만 (스크롤로 벗어난 상태면 그대로 정지 유지)
+    if (projectsVisible && swipers[currentTabId]) {
+      swipers[currentTabId].autoplay.start();
+    }
   });
 
   // 이메일창
