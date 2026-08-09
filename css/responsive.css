@@ -13,7 +13,7 @@
 }
 @media screen and (max-width:1560px) { 
   #projects h2 {margin-left: 20%; transform: scale(.9); transform-origin: left center;}
-  #projects nav {width: 20%;}
+  #projects nav {width: 15%;}
   #projects .swiper-outer {width: calc(100% - 20%);}
   #projects .swiper-outer .btn-prev {transform: translate(45%, -50%) scale(.75); }
   #projects .swiper-outer .btn-next {transform: translate(-55%, -50%) scale(.75);}
@@ -197,7 +197,7 @@
   #projects h2 {transform-origin: left top;}
   #projects nav {width: 100%;}
   .tabMenu {justify-content: center;}
-  #projects .tabMenu a {font-size: 4vw;}
+  #projects .tabMenu a {font-size: 3vw;}
   #projects .inner {margin-top: -6rem; justify-content: center;}
   #projects .swiper-wrapper {height: 48rem;}
   #projects .swiper-slide .desc {font-size: 2.4rem;}

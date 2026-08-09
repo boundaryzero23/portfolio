@@ -123,7 +123,7 @@ header nav a.active {font-family: 'VitroCore';}
 #visual .head-copy {position: relative;}
 #visual .head-copy video {width: 100%; filter:brightness(1) grayscale(1)}
 #visual .head-copy h2 {font-family: 'KBODiaGothicBold'; overflow: hidden; padding: 0; }
-#visual .text-box {position: absolute; top: 0; left: 0; width: 100%; height: 48vw; background-color: #fff; color: #000; display: flex; justify-content: center; align-items: flex-start; mix-blend-mode: screen;}
+#visual .text-box {position: absolute; top: 0; left: 0; width: 100%; height: 48vw; background-color: #fff; color: #000; display: flex; justify-content: center; align-items: flex-start; mix-blend-mode: screen; pointer-events: none;}
 #visual h2 span {font-family: 'KBODiaGothicBold'; display: inline-block; color: var(--color-darkgray); font-size: 27vw; line-height: 24vw; white-space: nowrap; text-transform: uppercase; margin-left: -8vw; }
 #visual h3 {font-family: 'KBODiaGothicMedium'; font-size: 4.5rem; padding: 2.2vw 0 0; color: #888; position: absolute; left: 6.9vw; top: 23vw;}
 #visual h3 span {color: #333; /*-webkit-text-stroke: 1px #888; */}
@@ -141,7 +141,7 @@ header nav a.active {font-family: 'VitroCore';}
 #projects h2 span {background: url('../img/tit_01.svg') 0 50% no-repeat; background-size: contain; position: absolute; top: -4rem; left: 85%; width: 34rem; height: 28rem; z-index: 2;}
 
 #projects .inner {display: flex; justify-content: space-between; align-items: center; height: 55rem; margin-top: 1vw;}
-#projects nav {width: 15%;}
+#projects nav {width: 11%;}
 #projects .tabMenu a {display: block; font-family: 'KBODiaGothicLight'; color: var(--color-white); font-size: 2.4rem; opacity: .5; padding: 2rem 0;}
 #projects .tabMenu li a:hover {opacity: 1;}
 #projects .tabMenu li.active a {font-family: 'KBODiaGothicMedium'; color: var(--color-primary); opacity: 1;}
@@ -153,13 +153,14 @@ header nav a.active {font-family: 'VitroCore';}
 #projects .swiper-slide {color: var(--color-white); border-radius: 3.7rem; overflow: hidden; border: 2px solid rgba(255, 255, 255, .2);}
 #projects .swiper-slide:hover {border-color:var(--color-primary)}
 
-.swiper-outer div[class^='btn-'] {position: absolute; top: 50%; cursor: pointer; width: 9rem; height: 9rem; background-color: var(--main-bg-color); color: var(--color-white); border-radius: 50%; z-index: 1; border: 2px solid var(--color-darkgray); transition: var(--transition);}
+.swiper-outer div[class^='btn-'] {position: absolute; top: 50%; cursor: pointer; width: 9rem; height: 9rem; background-color: var(--main-bg-color); color: var(--color-white); border-radius: 50%; z-index: 1; border: 2px solid var(--color-darkgray); transition: var(--transition); -webkit-user-select: none; user-select: none;}
 .swiper-outer div[class^='btn-']:hover {border-color: var(--color-primary);}
 #projects .swiper-outer .btn-prev {right: 100%; transform: translate(45%, -50%); }
 #projects .swiper-outer .btn-next {left: 100%; transform: translate(-55%, -50%);}
 .swiper-outer div[class^='btn-']::before {content: ''; width: 2.8rem; height: 4.6rem; background-image: url('../img/ico_prev.png'); background-repeat: no-repeat; background-position: 50%; background-size: contain; position: absolute; left: 47%; top: 50%; transform: translate(-50%, -50%);}
 #projects .swiper-outer .btn-next::before {transform: translate(-50%, -50%) rotate(180deg); left: 54%;}
-#projects .btn-disabled {opacity: 0.5; filter:grayscale(1)}
+#projects .swiper-button-disabled {opacity: 0.6; filter: grayscale(1); cursor: default; pointer-events: none;}
+#projects .swiper-button-disabled:hover {border-color: var(--color-darkgray);}
 
 .projects-list .img-box {padding-top: 100%; position: relative; overflow: hidden; text-align: center; height: 100%; }
 #projects .swiper-slide .img-box::before {content: ''; background: rgb(0,0,0,.5); background: linear-gradient(0deg, rgba(0,0,0,.9) 0%, transparent 60%); width: 100%; height: 100%; display: inline-block; position: absolute; left: 0; bottom: 0; z-index: 1;}
@@ -284,8 +285,11 @@ body.modal-active {display: flex; overflow: hidden;}
 .text-play { width: 100%; text-align: center; display: flex; overflow: hidden;}
 .text-play:first-of-type{ margin: 5rem 0; }
 .text-play .play{ display: flex; justify-content: space-around; animation: text-loop 40s linear infinite; min-width: 200%; flex-shrink: 0; }
-.text-play .play li{font-size: 17vw; flex-shrink: 0;font-family: 'KBODiaGothicMedium'; margin-right: 5vw;-webkit-text-stroke: 1px var(--color-white); color: rgba(0,0,0,0);}
-/* .text-play .play li span{color: var(--color-white);} */
+.text-play .play li{font-size: 17vw; flex-shrink: 0;font-family: 'KBODiaGothicMedium'; margin-right: 5vw;
+  -webkit-text-stroke: 0.008em var(--color-white);
+  paint-order: stroke fill;
+  color: rgba(0,0,0,0);
+  -webkit-font-smoothing: antialiased;}
 
 @keyframes text-loop {
     0%{ transform: translate(0, 0); }
@@ -388,8 +392,12 @@ footer .copyright {opacity: .6; font-size: 1.7rem;}
 .spline {position: absolute;left: 0; top: 0; z-index: 0; z-index: 0; overflow: hidden;
   /* overflow: hidden;*/ mix-blend-mode: multiply; 
   width: 100%;
-  height: 100%;}
-.spline iframe {width: 100%; height: 100%; border: none;}
+  height: 100%;
+  /* iframe이 마우스 휠/우클릭을 가로채지 못하게 통과시킨다.
+     3D의 마우스 반응은 main.js에서 좌표를 postMessage로 전달해 처리.
+     다른 css에서 덮이지 않도록 !important 지정 */
+  pointer-events: none !important;}
+.spline iframe {width: 100%; height: 100%; border: none; pointer-events: none !important;}
 
 .scroll_icon {position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); height: 10rem;text-align: center; font-size: 1rem; z-index: 90; border-radius: 1rem 3rem 0 0; padding: 1rem; display: flex; flex-direction: column; justify-content: center;}
 .scroll_icon img {width: 60%;}
