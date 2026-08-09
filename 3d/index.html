@@ -57,7 +57,9 @@
           var wrap = parentDoc.querySelector('.wrap');
 
           // 부모 페이지의 스크롤 잠금 해제 (main.js 의 동작과 동일)
-          if (wrap && !wrap.classList.contains('active')) {
+          // 아래로 내릴 때만 푼다. 위로 올릴 때도 붙이면 최상단으로
+          // 되돌아왔을 때 스크롤바가 사라지지 않는다.
+          if (wrap && e.deltaY > 0 && !wrap.classList.contains('active')) {
             wrap.classList.add('active');
           }
 
