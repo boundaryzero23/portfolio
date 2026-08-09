@@ -32,11 +32,64 @@
 
 <body>
   <canvas id="canvas3d"></canvas>
+
   <script type="module">
     import { Application } from './runtime.js';
     const canvas = document.getElementById('canvas3d');
     const app = new Application(canvas);
     app.load('./scene.splinecode');
+  </script>
+
+  <script>
+    // ============================================================
+    // 부모 페이지가 보내준 마우스 좌표로 3D 씬을 반응시킨다.
+    // ------------------------------------------------------------
+    // .spline iframe 은 pointer-events: none 이라 마우스 이벤트를
+    // 직접 받지 못한다. (그래야 부모 페이지가 스크롤/우클릭 가능)
+    // 대신 부모(main.js)가 mousemove 좌표를 postMessage로 보내주면
+    // 여기서 진짜 마우스가 움직인 것처럼 이벤트를 다시 발생시킨다.
+    // ============================================================
+    window.addEventListener('message', function (e) {
+      const data = e.data;
+      if (!data || data.type !== 'parentMouseMove') return;
+
+      const canvas = document.getElementById('canvas3d');
+
+      // Spline(three.js) 런타임은 pointermove / mousemove 를 사용하므로
+      // 두 가지 모두 발생시켜 어떤 방식이든 반응하도록 한다.
+      const baseInit = {
+        clientX: data.x,
+        clientY: data.y,
+        screenX: data.x,
+        screenY: data.y,
+        bubbles: true,
+        cancelable: true,
+        view: window
+      };
+
+      const mouseEvt = new MouseEvent('mousemove', baseInit);
+
+      const pointerEvt = (typeof PointerEvent !== 'undefined')
+        ? new PointerEvent('pointermove', Object.assign({
+            pointerId: 1,
+            pointerType: 'mouse',
+            isPrimary: true
+          }, baseInit))
+        : null;
+
+      // window, document, canvas 모두에 전달
+      [window, document, canvas].forEach(function (target) {
+        if (!target) return;
+        target.dispatchEvent(new MouseEvent('mousemove', baseInit));
+        if (pointerEvt) {
+          target.dispatchEvent(new PointerEvent('pointermove', Object.assign({
+            pointerId: 1,
+            pointerType: 'mouse',
+            isPrimary: true
+          }, baseInit)));
+        }
+      });
+    });
   </script>
 </body>
 
