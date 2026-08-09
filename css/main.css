@@ -159,7 +159,8 @@ header nav a.active {font-family: 'VitroCore';}
 #projects .swiper-outer .btn-next {left: 100%; transform: translate(-55%, -50%);}
 .swiper-outer div[class^='btn-']::before {content: ''; width: 2.8rem; height: 4.6rem; background-image: url('../img/ico_prev.png'); background-repeat: no-repeat; background-position: 50%; background-size: contain; position: absolute; left: 47%; top: 50%; transform: translate(-50%, -50%);}
 #projects .swiper-outer .btn-next::before {transform: translate(-50%, -50%) rotate(180deg); left: 54%;}
-#projects .swiper-button-disabled {opacity: 0.6; filter: grayscale(1); cursor: default; pointer-events: none;}
+
+#projects .swiper-button-disabled {opacity: .9; filter: grayscale(1); cursor: default;}
 #projects .swiper-button-disabled:hover {border-color: var(--color-darkgray);}
 
 .projects-list .img-box {padding-top: 100%; position: relative; overflow: hidden; text-align: center; height: 100%; }
