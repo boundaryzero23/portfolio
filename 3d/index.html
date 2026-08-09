@@ -33,63 +33,62 @@
 <body>
   <canvas id="canvas3d"></canvas>
 
+  <script>
+    // ============================================================
+    // iframe 위에서 굴린 휠을 부모 페이지 스크롤로 전달
+    // ------------------------------------------------------------
+    // 부모 페이지는 .wrap 이 height:100vh; overflow:hidden 으로
+    // 잠겨 있다가, main.js 가 body의 휠 이벤트를 감지해
+    // .wrap 에 active 를 붙여야 비로소 스크롤이 풀린다.
+    //
+    // 그런데 마우스가 이 iframe 위에 있으면 휠 이벤트가 부모 body 까지
+    // 전달되지 않아 .wrap 이 계속 잠긴 상태로 남는다.
+    // → 그래서 여기서 부모의 .wrap 잠금을 직접 풀어주고 스크롤도 넘긴다.
+    //
+    // Spline 런타임이 canvas에서 stopPropagation() 을 호출할 수 있으므로
+    // capture 단계로 등록해 먼저 이벤트를 받는다.
+    // ============================================================
+    (function () {
+      function forwardWheelToParent(e) {
+        try {
+          if (!window.parent || window.parent === window) return;
+
+          var parentDoc = window.parent.document;
+          var wrap = parentDoc.querySelector('.wrap');
+
+          // 부모 페이지의 스크롤 잠금 해제 (main.js 의 동작과 동일)
+          if (wrap && !wrap.classList.contains('active')) {
+            wrap.classList.add('active');
+          }
+
+          // 실제 스크롤 이동량 전달
+          window.parent.scrollBy({
+            top: e.deltaY,
+            left: e.deltaX,
+            behavior: 'auto'
+          });
+        } catch (err) {
+          console.warn('부모 페이지 스크롤 전달 실패:', err);
+        }
+      }
+
+      window.addEventListener('wheel', forwardWheelToParent, {
+        capture: true,
+        passive: true
+      });
+
+      document.addEventListener('wheel', forwardWheelToParent, {
+        capture: true,
+        passive: true
+      });
+    })();
+  </script>
+
   <script type="module">
     import { Application } from './runtime.js';
     const canvas = document.getElementById('canvas3d');
     const app = new Application(canvas);
     app.load('./scene.splinecode');
-  </script>
-
-  <script>
-    // ============================================================
-    // 부모 페이지가 보내준 마우스 좌표로 3D 씬을 반응시킨다.
-    // ------------------------------------------------------------
-    // .spline iframe 은 pointer-events: none 이라 마우스 이벤트를
-    // 직접 받지 못한다. (그래야 부모 페이지가 스크롤/우클릭 가능)
-    // 대신 부모(main.js)가 mousemove 좌표를 postMessage로 보내주면
-    // 여기서 진짜 마우스가 움직인 것처럼 이벤트를 다시 발생시킨다.
-    // ============================================================
-    window.addEventListener('message', function (e) {
-      const data = e.data;
-      if (!data || data.type !== 'parentMouseMove') return;
-
-      const canvas = document.getElementById('canvas3d');
-
-      // Spline(three.js) 런타임은 pointermove / mousemove 를 사용하므로
-      // 두 가지 모두 발생시켜 어떤 방식이든 반응하도록 한다.
-      const baseInit = {
-        clientX: data.x,
-        clientY: data.y,
-        screenX: data.x,
-        screenY: data.y,
-        bubbles: true,
-        cancelable: true,
-        view: window
-      };
-
-      const mouseEvt = new MouseEvent('mousemove', baseInit);
-
-      const pointerEvt = (typeof PointerEvent !== 'undefined')
-        ? new PointerEvent('pointermove', Object.assign({
-            pointerId: 1,
-            pointerType: 'mouse',
-            isPrimary: true
-          }, baseInit))
-        : null;
-
-      // window, document, canvas 모두에 전달
-      [window, document, canvas].forEach(function (target) {
-        if (!target) return;
-        target.dispatchEvent(new MouseEvent('mousemove', baseInit));
-        if (pointerEvt) {
-          target.dispatchEvent(new PointerEvent('pointermove', Object.assign({
-            pointerId: 1,
-            pointerType: 'mouse',
-            isPrimary: true
-          }, baseInit)));
-        }
-      });
-    });
   </script>
 </body>
 
