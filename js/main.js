@@ -210,6 +210,13 @@ $(function(){
   // tabMenu
   const tabMenu = $('.tabMenu li'), 
   tabSlider = $('.swiper-outer > div');
+
+  // #projects 영역이 화면에 들어왔는지 여부.
+  // 페이지 접속 직후가 아니라 이 영역에 도달했을 때부터 autoplay를 시작한다.
+  let projectsVisible = false;
+  // 현재 보고 있는 탭의 id (IntersectionObserver에서 참조)
+  let currentTabId = null;
+
   tabMenu.click(function(e){
     e.preventDefault();  
     {
@@ -219,6 +226,7 @@ $(function(){
       const tabTarget = $(this).find('a').attr('href');
       const tabId = tabTarget.replace('#', '');
       const currentSwiper = swipers[tabId];
+      currentTabId = tabId;
 
       // 화면에 보이지 않게 될 모든 swiper의 autoplay를 먼저 정지
       // (숨겨진 상태로 계속 돌면 폭 계산이 꼬여서 다음에 보일 때 재생이 안되거나 랜덤하게 깨짐)
@@ -238,7 +246,12 @@ $(function(){
         currentSwiper.update();
         currentSwiper.updateSlides();
         currentSwiper.updateSize();
-        currentSwiper.autoplay.start();
+        // #projects 영역에 도달한 뒤에만 재생한다
+        if (projectsVisible) {
+          currentSwiper.autoplay.start();
+        } else {
+          currentSwiper.autoplay.stop();
+        }
       });
     }
   });
@@ -260,10 +273,10 @@ $(function(){
   });
 
   // 2) Fisher-Yates 셔플로 카테고리 순서가 아니라 무작위 순서로 섞기
-  for (let i = allSlides.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [allSlides[i], allSlides[j]] = [allSlides[j], allSlides[i]];
-  }
+  // for (let i = allSlides.length - 1; i > 0; i--) {
+  //   const j = Math.floor(Math.random() * (i + 1));
+  //   [allSlides[i], allSlides[j]] = [allSlides[j], allSlides[i]];
+  // }
 
   // 3) 섞인 순서대로 wrapper에 추가
   allSlides.forEach(function ($slide) {
@@ -318,13 +331,52 @@ $('.projects-list').each(function () {
     });
 
     swipers[tabId] = swiper;
-
 });
+
+  // 생성 직후에는 모든 autoplay를 멈춰둔다.
+  // (Swiper는 autoplay 옵션이 있으면 생성과 동시에 자동 재생을 시작하므로,
+  //  페이지 접속 시점이 아니라 #projects 영역에 도달했을 때부터 돌게 하려면 꺼야 한다)
+  Object.keys(swipers).forEach(function (id) {
+    swipers[id].autoplay.stop();
+  });
 
   // 모든 swiper가 생성된 이후에 첫 번째 탭을 활성화해야
   // 탭 클릭 핸들러 안에서 swipers 객체를 안전하게 참조할 수 있음
   tabMenu.eq(0).trigger('click');
 
+  // #projects 영역 진입 감지
+  // 이 영역이 화면에 보이기 시작하면 현재 탭의 swiper를 재생하고,
+  // 영역을 벗어나면 멈춘다. (보이지 않는 곳에서 헛도는 것 방지)
+  const projectsSection = document.querySelector('#projects');
+
+  if (projectsSection && 'IntersectionObserver' in window) {
+    const projectsObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        projectsVisible = entry.isIntersecting;
+
+        const sw = swipers[currentTabId];
+        if (!sw) return;
+
+        if (entry.isIntersecting) {
+          sw.update();
+          sw.autoplay.start();
+        } else {
+          sw.autoplay.stop();
+        }
+      });
+    }, {
+      // 영역이 20% 정도 보이면 시작
+      threshold: 0.2
+    });
+
+    projectsObserver.observe(projectsSection);
+  } else {
+    // IntersectionObserver 미지원 브라우저는 기존처럼 바로 재생
+    projectsVisible = true;
+    if (swipers[currentTabId]) {
+      swipers[currentTabId].autoplay.start();
+    }
+  }
   // 섬네일 gif 이미지 적용
   $('.projects-list a img').mouseover(function(){
     $(this).attr('src', $(this).data('animated'));
