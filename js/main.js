@@ -139,6 +139,35 @@ $(function(){
   // 스크롤 이동 감지
   // firefox 브라우저인지 체크
   const mousewheelevt=(/Firefox/i.test(navigator.userAgent))? "DOMMouseScroll" : "mousewheel" //FF doesn't recognize mousewheel as of FF3.x
+  
+  
+  // 첫 화면(비주얼)에서 아래로 휠을 굴리면 projects 영역으로 한 번에 이동시킨다.
+  // .wrap 잠금이 풀리면서 스크롤바가 갑자기 생겨 스크롤 위치가 어긋나는 것을 방지.
+  let isSnapping = false;
+
+  function goToProjects() {
+    // 이미 이동 중이거나, 이미 첫 화면을 벗어났으면 무시
+    if (isSnapping) return;
+    if ($(window).scrollTop() > 10) return;
+
+    isSnapping = true;
+    $('.wrap').addClass('active');
+
+    // 잠금이 풀려 레이아웃이 잡힌 다음 프레임에 위치를 계산해야 정확하다
+    requestAnimationFrame(function () {
+      const targetDistance = $('#projects').offset().top;
+      $('html, body').stop().animate({
+        scrollTop: targetDistance
+      }, 600, function () {
+        isSnapping = false;
+      });
+    });
+  }
+
+  // 3d/index.html(iframe)에서도 같은 동작을 호출할 수 있도록 노출
+  window.goToProjects = goToProjects;
+
+
   // 브라우저 체크 후 이벤트 적용
   $('body').on(mousewheelevt, function (e) {
     const wheel = e.originalEvent.wheelDelta;
@@ -149,7 +178,12 @@ $(function(){
     }else{
       //스크롤 내릴때
       // console.log(`내리는 중 ${wheel}`);
-      $('.wrap').addClass('active');
+      if ($(window).scrollTop() <= 10) {
+        // 첫 화면에서는 projects 영역으로 스냅 이동
+        goToProjects();
+      } else {
+        $('.wrap').addClass('active');
+      }
     }
   });
 
