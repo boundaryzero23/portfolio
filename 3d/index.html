@@ -62,10 +62,8 @@
 
           // 아래로 내릴 때만 처리
           if (e.deltaY > 0) {
-            // 첫 화면이라면 projects 영역으로 한 번에 이동
             if (scrollTop <= 10 && typeof parentWin.goToProjects === 'function') {
               parentWin.goToProjects();
-              return;
             }
 
             if (wrap && !wrap.classList.contains('active')) {
