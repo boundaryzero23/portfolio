@@ -346,10 +346,9 @@ bottom: 0; width: 42rem; height: 100%; background-color: var(--main-bg-color); z
 /* footer */
 footer {background-color: var(--main-bg-color);}
 footer .container {padding: 0 0 4vw; display: flex; justify-content: space-between; align-items: center;}
-footer .info {}
 footer .logo {width: 46vw; height: 13vw; background: url('../img/zero_boundary.svg') 100% 50% no-repeat; background-size: contain; text-indent: -9999px; font-size: 0;}
-footer p {font-family: 'KBODiaGothicLight'; font-size: 1.2rem; line-height: 1.8; color: var(--color-white); opacity: .3;}
-footer .copyright {opacity: .6; font-size: 1.7rem;}
+footer p {font-family: 'KBODiaGothicLight'; font-size: 1.2rem; line-height: 1.8; color: var(--color-white); opacity: .4;}
+footer .copyright {opacity: .8; font-size: 1.7rem;}
 
 /* #container {position: absolute;
   top: 0;
