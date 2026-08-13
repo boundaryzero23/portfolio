@@ -1,30 +1,29 @@
 $(function(){
-  // 영상 gif 이미지 불러오기
+  // 섬네일 호버용 gif 프리로드
+  // 페이지 로드 시점이 아니라 #projects 영역에 도달했을 때 실행한다.
+  // (초기 로딩 부담을 줄이기 위함 / 아래 IntersectionObserver에서 호출)
   let images = [];
+  let preloaded = false;
 
-  function preload() {
-    for(let i = 0; i < preload.arguments.length; i++) {
-      images[i] = new Image();
-      images[i].src = preload.arguments[i];
-    }
+  function preloadThumbGifs() {
+    if (preloaded) return;
+    preloaded = true;
+
+    // DOM의 data-animated 값을 불러옴
+    const urls = [];
+    $('.projects-list a img').each(function () {
+      const src = $(this).data('animated');
+      if (src && urls.indexOf(src) === -1) {
+        urls.push(src);
+      }
+    });
+
+    urls.forEach(function (src) {
+      const img = new Image();
+      img.src = src;
+      images.push(img);
+    });
   }
-
-  preload(
-    "../img/thumb_motion_1.gif",
-    "../img/thumb_motion_2.gif",
-    "../img/thumb_motion_3.gif",
-    "../img/thumb_motion_4.gif",
-    "../img/thumb_motion_5.gif",
-    "../img/thumb_video_1.gif",
-    "../img/thumb_video_2.gif",
-    "../img/thumb_video_3.gif",
-    "../img/thumb_video_4.gif",
-    "../img/thumb_video_5.gif",
-    "../img/thumb_video_6.gif",
-    "../img/thumb_video_7.gif",
-    "../img/thumb_video_8.gif",
-    "../img/thumb_video_9.gif",
-  )
 
   // intro
   $('#wrap').hide();
@@ -137,88 +136,109 @@ $(function(){
   });
 
   // 스크롤 이동 감지
-  // firefox 브라우저인지 체크
-  const mousewheelevt=(/Firefox/i.test(navigator.userAgent))? "DOMMouseScroll" : "mousewheel" //FF doesn't recognize mousewheel as of FF3.x
+  // firefox 브라우저인지 체크 
+  // const mousewheelevt=(/Firefox/i.test(navigator.userAgent))? "DOMMouseScroll" : "mousewheel" //FF doesn't recognize mousewheel as of FF3.x
   
   
-  // 첫 화면(비주얼)에서 아래로 휠을 굴리면 projects 영역으로 한 번에 이동시킨다.
-  // .wrap 잠금이 풀리면서 스크롤바가 갑자기 생겨 스크롤 위치가 어긋나는 것을 방지.
-  let isSnapping = false;
+  // 첫 화면(비주얼)에서 아래로 휠을 굴릴 때의 처리
+  // .wrap 의 스크롤 잠금(height:100vh; overflow:hidden)을 풀어주는 역할만 한다.
+  const wrapEl = document.querySelector('.wrap');
 
   function goToProjects() {
-    // 이미 이동 중이거나, 이미 첫 화면을 벗어났으면 무시
-    if (isSnapping) return;
-    if ($(window).scrollTop() > 10) return;
+    // 이미 첫 화면을 벗어났으면 처리할 것이 없음
+    if (window.scrollY > 10) return;
 
-    isSnapping = true;
-    $('.wrap').addClass('active');
-
-    // 잠금이 풀려 레이아웃이 잡힌 다음 프레임에 위치를 계산해야 정확하다
-    requestAnimationFrame(function () {
-      const targetDistance = $('#projects').offset().top;
-      $('html, body').stop().animate({
-        scrollTop: targetDistance
-      }, 600, function () {
-        isSnapping = false;
-      });
-    });
+    if (wrapEl && !wrapEl.classList.contains('active')) {
+      wrapEl.classList.add('active');
+    }
   }
 
   // 3d/index.html(iframe)에서도 같은 동작을 호출할 수 있도록 노출
   window.goToProjects = goToProjects;
 
+  // 휠 이벤트 (passive)
+  // jQuery .on() 으로 붙이면 non-passive 리스너가 되어 브라우저가
+  // 핸들러가 끝날 때까지 스크롤을 진행시키지 못하고 기다린다.
+  // → 스크롤이 멈췄다가 한 번에 튀는 원인. preventDefault를 쓰지 않으므로 passive로 등록한다.
+  window.addEventListener('wheel', function (e) {
+    // 올릴 때는 처리할 것이 없음
+    if (e.deltaY <= 0) return;
 
-  // 브라우저 체크 후 이벤트 적용
-  $('body').on(mousewheelevt, function (e) {
-    const wheel = e.originalEvent.wheelDelta;
-
-    if (wheel > 0) {
-      //스크롤 올릴때
-      // console.log(`올리는 중 ${wheel}`);
-    }else{
-      //스크롤 내릴때
-      // console.log(`내리는 중 ${wheel}`);
-      if ($(window).scrollTop() <= 10) {
-        // 첫 화면에서는 projects 영역으로 스냅 이동
-        goToProjects();
-      } else {
-        $('.wrap').addClass('active');
-      }
+    if (window.scrollY <= 10) {
+      // 첫 화면에서는 goToProjects 처리
+      goToProjects();
+    } else if (wrapEl && !wrapEl.classList.contains('active')) {
+      // 이미 붙어 있으면 다시 쓰지 않는다
+      wrapEl.classList.add('active');
     }
-  });
+  }, { passive: true });
 
   // 윈도우 스크롤 시
-  $(window).scroll(function(){
-    // 비주얼 영역일 때 스크롤 숨김
-    const visual = $('#visual');
-    // console.log(visual.offset().top, $(window).scrollTop());
-    if($(window).scrollTop() <= 0) {
-      $('.wrap').removeClass('active');
-    }
-    if($('header').hasClass('blend-mode-screen')) {
-      $('.mobile-btn').addClass('blend-mode-screen');
-    }else{
-      $('.mobile-btn').removeClass('blend-mode-screen');
+  // requestAnimationFrame으로 묶어 프레임당 1회만 실행한다.
+  // 또한 읽기(위치 계산)를 먼저 끝내고 쓰기(클래스 변경)를 뒤에 몰아서
+  // 레이아웃을 반복 재계산하는 layout thrashing을 피한다.
+  const headerEl = document.querySelector('header');
+  const mobileBtnEl = document.querySelector('.mobile-btn');
+  const $menuMobile = $('.menu-mobile li');
+  let ticking = false;
+
+  function onScrollFrame() {
+    ticking = false;
+
+    const y = window.scrollY;
+
+    if (y <= 0 && wrapEl && wrapEl.classList.contains('active')) {
+      wrapEl.classList.remove('active');
     }
 
-    // 스크롤 시 해당 영역 활성화
-    $contents.each(function(){
-      // console.log($(this).offset().top, $(window).scrollTop() + 100);
-      if($(this).offset().top <= $(window).scrollTop() + 100) {
-        let idx = $(this).index();
+    // --- 읽기 단계 ---
+    // 뒤에서부터 훑어 조건에 맞는 첫 섹션을 찾으면 즉시 종료.
+    // (원본은 break가 없어 위쪽 섹션 전부에 대해 클래스 조작이 중복 실행되었다)
+    let idx = -1;
+    for (let i = $contents.length - 1; i >= 0; i--) {
+      const el = $contents[i];
+      // getBoundingClientRect().top 은 이미 뷰포트 기준이므로 그대로 비교한다
+      if (el.getBoundingClientRect().top <= 100) {
+        idx = $(el).index();
+        break;
+      }
+    }
+
+    // --- 쓰기 단계 ---
+    if (idx > -1) {
+      // 이미 활성화된 항목이면 DOM을 건드리지 않는다
+      if (!$menu.eq(idx).find('a').hasClass('active')) {
         $menu.find('a').removeClass('active');
-        $('.menu-mobile li').removeClass('active');
+        $menuMobile.removeClass('active');
         $menu.eq(idx).find('a').addClass('active');
-        $('.menu-mobile li').eq(idx).addClass('active');
-        if(idx >= 2) {
-          $('header').addClass('blend-mode-screen');
-        }else{
-          $('header').removeClass('blend-mode-screen');
+        $menuMobile.eq(idx).addClass('active');
+      }
+
+      // mix-blend-mode는 합성 비용이 크므로 값이 바뀔 때만 토글
+      if (headerEl) {
+        const needBlend = idx >= 2;
+        if (needBlend !== headerEl.classList.contains('blend-mode-screen')) {
+          headerEl.classList.toggle('blend-mode-screen', needBlend);
         }
       }
-    });
-  });
+    }
 
+    // 모바일 버튼은 header 상태에 맞춰 동기화 (변경이 있을 때만)
+    if (headerEl && mobileBtnEl) {
+      const blended = headerEl.classList.contains('blend-mode-screen');
+      if (blended !== mobileBtnEl.classList.contains('blend-mode-screen')) {
+        mobileBtnEl.classList.toggle('blend-mode-screen', blended);
+      }
+    }
+  }
+
+  window.addEventListener('scroll', function () {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(onScrollFrame);
+  }, { passive: true });
+
+  
   // layerMask 클릭 시 모바일 메뉴 닫힘
   // layerMask.click(function() {
   //   mobileBtn.removeClass('active');
@@ -392,6 +412,9 @@ $('.projects-list').each(function () {
         if (!sw) return;
 
         if (entry.isIntersecting) {
+          // 이 영역에 도달했을 때 호버용 gif를 미리 받아둔다 (최초 1회)
+          preloadThumbGifs();
+
           sw.update();
           sw.autoplay.start();
         } else {
@@ -407,6 +430,7 @@ $('.projects-list').each(function () {
   } else {
     // IntersectionObserver 미지원 브라우저는 기존처럼 바로 재생
     projectsVisible = true;
+    preloadThumbGifs();
     if (swipers[currentTabId]) {
       swipers[currentTabId].autoplay.start();
     }
