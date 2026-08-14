@@ -436,10 +436,10 @@ $('.projects-list').each(function () {
     }
   }
   // 섬네일 gif 이미지 적용
-  $('.projects-list a img').mouseover(function(){
+  $('.projects-list a img').mouseenter(function(){
     $(this).attr('src', $(this).data('animated'));
   });
-  $('.projects-list a img').mouseout(function(){
+  $('.projects-list a img').mouseleave(function(){
     $(this).attr('src', $(this).data('static'));
   });
 
