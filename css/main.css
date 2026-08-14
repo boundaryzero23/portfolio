@@ -141,7 +141,7 @@ header nav a.active {font-family: 'VitroCore';}
 #projects h2 {color: var(--color-white); position: relative; display: inline-block; margin-left: 15%; z-index: 2; font-family: 'KBODiaGothicBold';}
 #projects h2 span {background: url('../img/tit_01.svg') 0 50% no-repeat; background-size: contain; position: absolute; top: -4rem; left: 85%; width: 34rem; height: 28rem; z-index: 2;}
 
-#projects .inner {display: flex; justify-content: space-between; align-items: center; height: 55rem; margin-top: 1vw;}
+#projects .inner {display: flex; justify-content: space-between; align-items: center; align-content: flex-start; height: 55rem; margin-top: 1vw;}
 #projects nav {width: 11%;}
 #projects .tabMenu a {display: block; font-family: 'KBODiaGothicLight'; color: var(--color-white); font-size: 2.4rem; opacity: .5; padding: 2rem 0;}
 #projects .tabMenu li a:hover {opacity: 1;}
@@ -165,10 +165,18 @@ header nav a.active {font-family: 'VitroCore';}
 #projects .swiper-button-disabled:hover {border-color: var(--color-darkgray);}
 
 .projects-list .img-box {padding-top: 100%; position: relative; overflow: hidden; text-align: center; height: 100%; }
-#projects .swiper-slide .img-box::before {content: ''; background: rgb(0,0,0,.5); background: linear-gradient(0deg, rgba(0,0,0,.9) 0%, transparent 60%); width: 100%; height: 100%; display: inline-block; position: absolute; left: 0; bottom: 0; z-index: 1;}
-#projects .swiper-slide .img-box img {filter:grayscale(1) brightness(.8) contrast(1.4); position: absolute; width: 100%; height: 100%; position: absolute; left: 0; top: 0; object-fit: cover; opacity: .6; }
+
+/* 그라데이션 오버레이
+   pointer-events:none - 클릭/호버 이벤트를 가로채지 않도록 */
+#projects .swiper-slide .img-box::after {content: ''; background: rgb(0,0,0,.5); background: linear-gradient(0deg, rgba(0,0,0,.9) 0%, transparent 55%); width: 100%; height: 100%; display: inline-block; position: absolute; left: 0; bottom: 0; pointer-events: none; transition: opacity .3s;}
+
+/* 호버(gif 재생) 시 그라데이션을 살짝 걷어내 영상이 잘 보이게 한다.
+   완전히 없애지 않는 이유는 하단 텍스트 가독성을 유지하기 위함 */
+#projects .swiper-slide a:hover .img-box::after {opacity: .7;}
+
+#projects .swiper-slide .img-box img {filter:grayscale(1) brightness(.8) contrast(1.4); position: absolute; width: 100%; height: 100%; left: 0; top: 0; object-fit: cover; opacity: .6; transition: opacity .3s;}
 #projects .swiper-slide:hover .img-box img {filter:grayscale(0); opacity: 1;}
-#projects .swiper-slide a:hover .img-box.gif::before {z-index: 0;}
+
 #projects .swiper-slide .desc {color: var(--color-white); position: absolute; left: 2.8rem; bottom: 2.8rem; font-size: 2.8rem; font-family: 'KBODiaGothicLight'; line-height: 1.4; opacity: 0.7; z-index: 2;}
 #projects .projects-list a:hover .desc {opacity: 1;}
 #projects .tag {width: 15rem; height: 6rem; background: var(--main-bg-color); color: var(--color-white); border-radius: 0 0 0 4rem; position: absolute; top: 0; right: 0; line-height: 2.8; text-align: center; font-family: 'KBODiaGothicBold'; font-size: 2rem;}
@@ -252,12 +260,13 @@ body.modal-active {display: flex; overflow: hidden;}
   background-image: url('../img/bg_about_1.png'), linear-gradient(35deg, #0cc9be 0%, #2ae5c0 100%); 
    background-repeat: no-repeat; background-position: right 40%; background-size: cover; background-blend-mode: multiply; font-family: 'KBODiaGothicLight'; font-size: 1.1vw; position: relative; padding: 7rem 0 11rem;}
 #about .container {position: relative;}
-#about p {margin-bottom: 2rem;}
+#about p {margin-bottom: 2rem; font-size: 1.8rem; line-height: 1.8;}
 #about strong {font-weight: bold;}
-#about ul li {padding: 1rem 0; font-size: 2rem;}
+#about ul li {padding: 1rem 0; font-size: 1.7rem;}
 #about ul li strong {margin-right: .5vw;}
-#about h2 {display: flex; align-items: center; padding-top: 6rem; }
+#about h2 {display: flex; align-items: center; padding-top: 6rem;}
 #about h2 span {background: url('../img/tit_02.svg') 0 50% no-repeat; background-size: contain; width: 54rem; height: 25rem; margin: -5rem 1rem 0 0; text-indent: -9999px;}
+#about h3 {color: #202124;}
 #about .text {width: 69rem; font-size: 13rem; position: absolute; bottom: -6rem; right: 0; color: var(--color-white); line-height: 1; display: flex; justify-content: space-between; align-items: center; font-family: 'KBODiaGothicMedium';}
 #about .text span {width: 26rem;}
 #about .text span:nth-child(2) {width: 21rem; height: 21rem; }
@@ -300,7 +309,7 @@ body.modal-active {display: flex; overflow: hidden;}
 }
 
 /* contact */
-#contact {background-color: var(--main-bg-color); padding: 9rem 0 7rem; margin-top: -10rem; position: relative;}
+#contact {padding: 9rem 0 7rem; margin-top: -10rem; position: relative;}
 #contact .container {position: relative;}
 #contact h2 {position: relative; display: flex; justify-content: flex-start; align-items: center; color: var(--color-white); padding: 2rem 0; z-index: 2; font-family: 'KBODiaGothicBold';}
 #contact .tit-wrap {position: relative;}
