@@ -641,6 +641,46 @@ $('.projects-list').each(function () {
   });
 });
 
+const $whyNums = $('#about .why-stats .num[data-count]');
+  if ($whyNums.length && 'IntersectionObserver' in window) {
+    const countUp = function () {
+      $whyNums.each(function () {
+        const $el = $(this),
+              goal = parseInt($el.data('count'), 10),
+              dur  = 900;
+        let start = null;
+        const step = function (now) {
+          if (!start) start = now;
+          const p = Math.min((now - start) / dur, 1);
+          $el.text(Math.round(goal * (1 - Math.pow(1 - p, 3))));
+          if (p < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      });
+    };
+    const whyObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          countUp();
+          whyObserver.disconnect();
+        }
+      });
+    }, { threshold: 0.4 });
+    whyObserver.observe(document.querySelector('#about .why-stats'));
+  } else {
+    $whyNums.each(function () { $(this).text($(this).data('count')); });
+  }
+
+  // whyzero : 영역 클릭 시 PROJECTS 해당 탭으로 이동
+  $('#about .why-fields a').on('click', function (e) {
+    e.preventDefault();
+    const idx = parseInt($(this).data('tab'), 10);
+    $('.tabMenu li').eq(idx).find('a').trigger('click');
+    $('html, body').animate({
+      scrollTop: $('#projects').offset().top
+    }, 600);
+  });
+
 AOS.init({
   // easing: 'ease-out-cubic',
   // duration: 1500,
