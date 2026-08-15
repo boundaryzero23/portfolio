@@ -13,7 +13,7 @@
 }
 @media screen and (max-width:1560px) { 
   #projects h2 {margin-left: 20%; transform: scale(.9); transform-origin: left center;}
-  #projects nav {width: 15%;}
+  #projects nav {width: 12%;}
   #projects .swiper-outer {width: calc(100% - 20%);}
   #projects .swiper-outer .btn-prev {transform: translate(45%, -50%) scale(.75); }
   #projects .swiper-outer .btn-next {transform: translate(-55%, -50%) scale(.75);}
@@ -22,13 +22,20 @@
   #projects .swiper-slide .desc {font-size: 2.4rem;}
 
   #about h2 {transform: scale(.9); transform-origin: left top; margin-bottom: -3rem;}
-  #about .text {transform: scale(.8); transform-origin: right center;}
+
+  /* ---- About New ---- */
+  #about .why-stats strong {font-size: 4.8rem;}
+  #about .why-stats li:last-child strong {font-size: 4.2rem;}
+  #about .why-stats li::after {width: 4rem; height: 4rem; top: 2.5rem; right: 2.4rem;}
+  #about .case-tit {font-size: 2.3rem;}
+
+  #about .why-lead-head {font-size: 4.6rem;}
+  #about .why-image {top: 7rem; right: 3rem; width: 50rem;}
+  #about .why-fields em {font-size: 2.2rem;}
 
   #contact h2 {transform: scale(.9); transform-origin: left bottom;}
   #contact .tit-wrap::before {width: 37rem;}
   #contact .tit-wrap::after {top: 71%;}
-
-  /* .sticker-wrap {max-width: 80%; transform-origin: center bottom;} */
 
   /* modal */
   #modal .btn-close {width: 24px; height: 24px;}
@@ -40,22 +47,19 @@
 
 }
 @media screen and (max-width:1200px) { 
-  p, #about ul li {font-size: 1.8rem;}
+  p {font-size: 1.8rem;}
   h3 {font-size: 4.6rem;}
 
   #visual h3 {font-size: 4.7rem; padding: 2rem 0 0;}
 
   #projects .tabMenu a {font-size: 2.2rem;}
-  /* #projects .swiper-wrapper {height: 48rem;} */
   #projects .tag {font-size: 1.9rem; height: 5.4rem; line-height: 2.7; border-radius:0 0 0 3rem}
 
-  #about .text {transform: scale(.75);}
+  /* ---- About New ---- */
+  #about .why-lead-head {font-size: 4.6rem;}
+  #about .why-image {width: 50rem; top: 6rem;}
 
   .sticker-wrap {max-width: 100%;}
-
-  /* #modal.dark .video-area {width: 55%;}
-  #modal.dark .info-area {width: 40%;}
-  #modal .video-area .video {padding-top: 100%;} */
 
   #modal.dark .video-area {width: 100%; height: auto;}
   #modal.dark .info-area {width: 100%; height: auto;}
@@ -70,7 +74,7 @@
   #intro .intro-logo img {height: 60px}
 
   .wrap {height: auto;}
-  .section {padding: 4rem 0 18rem;}
+  #projects.section {padding: 4rem 0 18rem;}
   .container {width: 90%;}
   .mobile-btn {display: flex;}
   header .container {height: 11rem;}
@@ -80,15 +84,6 @@
   #visual {padding:11vw 0 5vw; height: 52vw; }
   #visual .container h3 {font-size: 3.9vw; }
   .spline {background: url('../img/3d.gif') 50% 0 no-repeat; background-size: 110%;}
-  /* .spline::after {content: '';
-    position: absolute;
-    width: 100%;
-    height: 62vw;
-    background: url('../img/3d.gif') no-repeat;
-    background-size: cover;} */
-    
-    /* .spline canvas {width: 0 !important; height: 0 !important;} */
-  /* .spline iframe {display: none; visibility: hidden;} */
 
   #projects h2 {margin-left: 0; transform: scale(.75);}
   #projects nav {width: 100%; z-index: 3;}
@@ -101,9 +96,17 @@
   #projects .swiper-slide {border-radius: 1.7rem;}
 
   #about h2 {transform: scale(.75); margin-bottom: -6rem;}
-  #about .text {transform: scale(.55);}
 
-  #contact {margin-top: -19rem;}
+  /* ---- About New ---- */
+  #about .why-stats {gap: 2.4rem;}
+  #about .why-stats li {padding: 2.8rem 2.4rem;}
+  #about .why-fields {flex-wrap: wrap; gap: 1.6rem 2.4rem;}
+  #about .why-fields li {flex: 0 0 calc(33.333% - 1.6rem);}
+
+  #about .why-lead-head {font-size: 4.2rem;}
+  #about .why-image {width: 48rem; right: -2rem;}
+
+  /* #contact {margin-top: -6rem;} */
   #contact h2 {transform: scale(.75);}
   #contact .tit-wrap::before {width: 31rem;}
   #contact .tit-wrap::after {top: 75%;}
@@ -117,22 +120,29 @@
 @media screen and (max-width:1024px) {
   #modal.light .info-area ul {flex-wrap: wrap;}
   #modal.light .info-area li {padding: 0.5rem 0;}
-  /* #modal.light .info-area dt, #modal.light .info-area dd {display: inline-block;}
-  #modal.light .info-area dt::after {content: '.'; display: inline-block; margin: 0 .5rem 0 0;} */
+
+  /* ---- About New ---- */
+  #about .why-image {width: 41rem; top: 10rem; right: -7rem;}
+  #about .why-stats strong .num {font-size:3.8rem;}
+  #about .why-stats strong .small-txt {font-size: 1.7rem;}
+  #about .why-stats li::after {width: 3.2rem; height: 3.2rem; top: 3.3rem; right: 2rem;}
 }
 @media screen and (max-width:960px) {
   h3 {font-size: 3.8rem;}
-  p, #about ul li {font-size: 1.7rem;}
+  p {font-size: 1.7rem;}
 
   #visual {padding-top: 18vw; height: 57vw;}
   #visual h3 {font-size: 4rem;}
   .spline {background-size: 121%;}
 
   #about {background-position: -30% 40%;}
-  #about .text {bottom: -19rem;}
+  
+  /* ---- About New ---- */
+  #about .why-lead-head {font-size: 3.8rem;}
+  #about .why-stats {gap: 1.6rem;}
+  #about .why-stats .label {font-size: 1.8rem;}
 
   #skill {padding-top: 6rem;}
-
   #contact .btn-area {margin-top: 1rem;}
   #contact .btn-area button {transform: scale(.8); transform-origin: left center; margin-right: 1rem;}
 
@@ -140,7 +150,6 @@
 }
 @media screen and (max-width:768px) {
   .container {width: 92%;}
-  .section {padding: 4rem 0 16rem;}
   .mobile-btn {top: 2em;}
   header .container {height: 9rem;}
 
@@ -148,7 +157,6 @@
   #visual h3 {font-size: 4.5vw; }
   #visual .text-box {height: 50vw;}
   .spline {background-size: 125%;}
-  /* .spline::after {height: 69vw;} */
   
   #projects h2 {transform: scale(.55);}
   #projects nav {width: 75%;}
@@ -157,8 +165,22 @@
   #projects .swiper-slide .desc {font-size: 2.4rem;}
 
   #about h2 {transform: scale(.55); margin-bottom: -12rem;}
-  #about .text {bottom: -24rem;}
   
+  /* ---- About New ---- */
+  #about .why-image {display: none;}
+  #about .why-lead {margin-bottom: 3.6rem;}
+
+  #about .why-stats {flex-wrap: wrap;}
+  #about .why-stats li { flex-basis: 33.33%; padding: 2.2rem 2rem;}
+  #about .why-stats .label {font-size: 1.6rem;}
+  #about .why-stats .label br {display: none;}
+
+  #about .why-fields li {flex-basis: calc(50% - 1.6rem);}
+  #about .why-fields em {font-size: 2rem;}
+  #about .case-tit {font-size: 2rem;}
+  #about .case-chain {gap: .8rem;}
+  #about .case-chain li {font-size: 1.4rem;}
+
   #skill .only-pc {display: none;}
   #skill .only-mo {display: block;}
   #skill .sticker-wrap {max-width: 60%;}
@@ -177,8 +199,6 @@
   #skill .sticker.jquery				{top: 107%; right: 0; width: 37.4%;}
   #skill .sticker.xd				{top: 0.391%; right: 49.6%; width: 24.8%;}
 
-  #contact {margin-top: 0;}
-  /* #contact {margin-top: -18rem;} */
   #contact h2 {transform: scale(.55);}
   #contact .tit-wrap::before {width: 23rem;}
   #contact .tit-wrap::after {top: 82%; height: 0.5rem;}
@@ -190,30 +210,36 @@
   #modal.light .info-area li {flex-basis: 50%;}
 }
 @media screen and (max-width:640px) {
-  .section {padding: 4rem 0;}
   .container {width: 90%;}
   h3 {font-size: 3.2rem;}
 
   #visual {padding: 25vw 0 5vw; height: 75vw;}
   .spline {background: url('../img/3d.gif') left top no-repeat, url('../img/3d.gif') right top no-repeat; background-size: 159%;}
 
+  #projects.section {padding: 4rem 0 8rem;}
   #projects h2 {transform-origin: left top;}
   #projects nav {width: 100%;}
   .tabMenu {justify-content: center;}
-  #projects .tabMenu a {font-size: 3vw;}
+  #projects .tabMenu a {font-size: 4.2vw;}
   #projects .inner {margin-top: -6rem; justify-content: center; height: 50rem;}
   #projects .swiper-wrapper {height: 43rem;}
   #projects .swiper-slide .desc {font-size: 2.4rem;}
   #projects .swiper-outer {width: 98%;}
 
-  #about p, #about ul li {font-size: 1.3rem;}
+  #about p  {font-size: 1.3rem;}
   #about h3 {margin-top: 3rem;}
   #about p {margin-bottom: 1rem;}
-  #about p br {display: none;}
-  #about .text {display: none;}
-  #about .text {bottom: -20rem; transform: scale(.4);}
   #about h2 {transform: scale(.65); font-size: 9rem;}
-  /* #about::before{content: ''; backdrop-filter: blur(3px); height: 99%; position: absolute; left: 0; top: 0; right: 0; bottom: 0;} */
+  
+  /* ---- About New ---- */
+  #about .why-lead-head {font-size: 3rem;}
+  #about .why-lead-body {font-size: 1.8rem; }
+  #about .why-fields li {flex-basis: 100%;}
+  #about .why-stats li {flex-basis: 100%;}
+
+  #about .case-chain {flex-direction: column; align-items: flex-start; gap: .6rem;}
+  #about .case-chain li + li::before {content: '↓'; margin-right: .8rem;}
+
 
   #skill .text-play .play li {font-size: 11rem;}
   #skill .sticker-wrap {margin-top: 7rem;}
@@ -243,13 +269,13 @@
   #visual .text-box {height: 60vw;} */
   #visual {padding-top: 27vw;}
 
+  #projects.section {padding: 4rem 0 6rem;}
   #projects .tag {font-size: 1.5rem; height: 4.4rem; line-height: 4.4rem;}
   #projects .swiper-slide .desc {font-size: 2rem;}
 
   #about {background-position: 10% 130%;}
   #about h2 {transform: scale(.65);}
   #about p {font-size: 3.4vw;}
-  #about ul li {font-size: 3.1vw;}
 
   #skill .sticker-wrap {max-width: 75%;}
 
@@ -282,7 +308,7 @@
   #projects h2 {transform: scale(.45);}
   #about h2 {transform: scale(.75);}
 
-  #contact {padding-top: 3rem;}
+  /* #contact {padding-top: 3rem;} */
   #contact h2 {transform: scale(.55); font-size: 23vw;}
   #contact h2 span {width: 86vw; margin-right: -9rem;}
   #contact .tit-wrap::before {width: 58%;}
