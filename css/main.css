@@ -448,7 +448,7 @@ footer .copyright {opacity: .8; font-size: 1.7rem;}
   .scroll_icon span {font-size: 1.4rem;}
 }
 @media all and (max-width:960px) {
-  .scroll_icon {height: 8rem;}
+  .scroll_icon {height: 9rem;}
   .scroll_icon img {width: 30%;}
-  .scroll_icon span {font-size: 1.2rem;}
+  .scroll_icon span {font-size: 1.3rem;}
 }
