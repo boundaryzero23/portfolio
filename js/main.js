@@ -681,9 +681,8 @@ const $whyNums = $('#about .why-stats .num[data-count]');
     }, 600);
   });
 
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 AOS.init({
-  // easing: 'ease-out-cubic',
-  // duration: 1500,
   once: true,
-  disable: window.innerWidth < 768
+  disable: reduceMotion
 });
