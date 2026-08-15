@@ -425,7 +425,7 @@ footer .copyright {opacity: .8; font-size: 1.7rem;}
 .spline iframe {width: 100%; height: 100%; border: none;}
 
 .scroll_icon {position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); height: 12rem; text-align: center; font-size: 1rem; z-index: 90; border-radius: 1rem 3rem 0 0; padding: 1rem; display: flex; flex-direction: column; justify-content: center;}
-.scroll_icon img {width: 42%;  padding: 3px; border-radius: 50%; transition: .3s;}
+.scroll_icon img {width: 42%; padding: 3px; border-radius: 50%; transition: .3s;}
 .scroll_icon span {display: block; margin-top: .2rem; font-size: 1.8rem; letter-spacing: .5pt; font-family: 'VitroPride'; color: #111; font-weight: 700;}
 .scroll_icon a {display: block; animation:movingIcon 1.2s infinite reverse; margin: 0 auto; }
 .scroll_icon a:hover img {filter: invert(.84); background-color: #fff;}
@@ -443,5 +443,12 @@ footer .copyright {opacity: .8; font-size: 1.7rem;}
 	
 }
 @media all and (max-width:1024px) {
-	.scroll_icon {display: none;}
+	.scroll_icon {height: 10rem;}
+  .scroll_icon img {width: 36%;}
+  .scroll_icon span {font-size: 1.4rem;}
+}
+@media all and (max-width:960px) {
+  .scroll_icon {height: 8rem;}
+  .scroll_icon img {width: 30%;}
+  .scroll_icon span {font-size: 1.2rem;}
 }
