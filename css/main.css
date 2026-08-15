@@ -272,11 +272,10 @@ body.modal-active {display: flex; overflow: hidden;}
 #about .why-lead-body {font-family: 'KBODiaGothic'; font-size: 2rem; line-height: 1.8; letter-spacing: -1pt; font-weight: 500;}
 
 /* ---- 캐릭터 ---- */
-#about .why-image {position: absolute; right: 7rem; top: 6rem; width: 60rem; height: 52rem; background: url(../img/bg_about_2.png) no-repeat; background-size: contain; z-index: 0;}
-#about .why-image {
-  -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
-}
+#about .why-image {position: absolute; right: 7rem; top: 6rem; width: 60rem; height: 52rem; background: url('../img/bg_about_2.png') no-repeat; background-image: -webkit-image-set(url('../img/why_character.webp') type('image/webp'), url('../img/why_character.png') type('image/png'));
+  background-image: image-set(url('../img/bg_about_2.webp') type('image/webp'), url('../img/bg_about_2.png') type('image/png'));
+background-size: contain; z-index: 0; -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);}
 
 /* ---- 숫자 카드 ---- */
 #about .why-stats {display: flex; gap: 4.8rem; margin-bottom: 3.2rem; position: relative; z-index: 1;}
