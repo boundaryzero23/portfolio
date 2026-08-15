@@ -685,4 +685,5 @@ AOS.init({
   // easing: 'ease-out-cubic',
   // duration: 1500,
   once: true,
+  disable: window.innerWidth < 768
 });
