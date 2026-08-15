@@ -271,8 +271,15 @@ $(function(){
   // 현재 보고 있는 탭의 id (IntersectionObserver에서 참조)
   let currentTabId = null;
 
+  let tabSwitching = false;
+
   tabMenu.click(function(e){
     e.preventDefault();  
+
+    if (tabSwitching) return;
+    if ($(this).hasClass('active')) return;   // 같은 탭 재클릭 무시
+    tabSwitching = true;
+
     {
       tabMenu.removeClass('active');
       $(this).addClass('active');
@@ -306,6 +313,7 @@ $(function(){
         } else {
           currentSwiper.autoplay.stop();
         }
+        tabSwitching = false;
       });
     }
   });
@@ -396,7 +404,8 @@ $('.projects-list').each(function () {
 
   // 모든 swiper가 생성된 이후에 첫 번째 탭을 활성화해야
   // 탭 클릭 핸들러 안에서 swipers 객체를 안전하게 참조할 수 있음
-  tabMenu.eq(0).trigger('click');
+  // active 상태면 중복 클릭 가드에 걸려 초기화가 건너뛰어지므로 먼저 해제
+  tabMenu.eq(0).removeClass('active').trigger('click');
 
   // #projects 영역 진입 감지
   // 이 영역이 화면에 보이기 시작하면 현재 탭의 swiper를 재생하고,
