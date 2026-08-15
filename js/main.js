@@ -362,6 +362,7 @@ $('.projects-list').each(function () {
         autoplay: {
             delay: 3000,
             disableOnInteraction: false,
+            pauseOnMouseEnter: true
         },
 
         slideToClickedSlide: true,
