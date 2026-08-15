@@ -112,7 +112,7 @@ $(function(){
     let $section = $contents.eq(idx);
     // 현재 선택된 section의 위치 정보(top)
     let sectionDistance = $section.offset().top;
-    $('html, body').animate({
+    $('html, body').stop().animate({
       scrollTop:sectionDistance
     }, 500)
     if(idx >= 2) {
@@ -130,7 +130,7 @@ $(function(){
   const goTop = $("#goTop");
   goTop.click(() => {
     $menu.find('a').removeClass('active');
-    $('html, body').animate({
+    $('html, body').stop().animate({
       scrollTop: 0
     }, 500)
   });
@@ -674,11 +674,26 @@ const $whyNums = $('#about .why-stats .num[data-count]');
   // whyzero : 영역 클릭 시 PROJECTS 해당 탭으로 이동
   $('#about .why-fields a').on('click', function (e) {
     e.preventDefault();
+
     const idx = parseInt($(this).data('tab'), 10);
+    const target = document.getElementById('projects');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // 진행 중인 jQuery 스크롤 애니메이션이 있으면 먼저 중단
+    $('html, body').stop();
+
+    // 탭 전환 (swiper 재계산 포함)
     $('.tabMenu li').eq(idx).find('a').trigger('click');
-    $('html, body').animate({
-      scrollTop: $('#projects').offset().top
-    }, 600);
+
+    // 레이아웃 재계산이 끝난 다음 프레임에서 스크롤 시작
+    if (target) {
+      requestAnimationFrame(function () {
+        target.scrollIntoView({
+          behavior: reduceMotion ? 'auto' : 'smooth',
+          block: 'start'
+        });
+      });
+    }
   });
 
 AOS.init({
