@@ -525,13 +525,11 @@ $('.projects-list').each(function () {
         </div>
 
         <div class="info-area">
-          <h2>${projectTit}</h2>
-
-          <div class="tools">
+          <h2><span>${projectTit}</span> 
             <img src="img/tool/ico_${tools}.png"
                 alt="${tools}"
                 title="${tools}">
-          </div>
+          </h2>
 
           <div class="desc">${projectDesc}</div>
         </div>
