@@ -482,29 +482,45 @@ $('.projects-list').each(function () {
       $('#modal').addClass('dark');
 
       const video = $(this).data('video');
-      let iframeSrc = '';
+      const poster = $(this).data('poster') || '';
+      let videoHtml = '';
 
-      // Google Drive인 경우
-      if (typeof video === 'string' && video.includes('drive.google.com')) {
+      if (typeof video === 'string' && /\.(mp4|webm)$/i.test(video)) {
 
+        // 로컬 영상 (깃헙 등에 직접 업로드한 파일)
+        videoHtml = `
+          <video
+            src="${video}"
+            ${poster ? `poster="${poster}"` : ''}
+            autoplay playsinline controls
+            preload="metadata"></video>`;
+
+      } else if (typeof video === 'string' && video.includes('drive.google.com')) {
+
+        // Google Drive
         const fileId = video.match(/\/d\/([^/]+)/)[1];
-        iframeSrc = `https://drive.google.com/file/d/${fileId}/preview?autoplay=1`;
+        videoHtml = `
+          <iframe
+            src="https://drive.google.com/file/d/${fileId}/preview?autoplay=1"
+            frameborder="0"
+            allow="autoplay; fullscreen"
+            allowfullscreen></iframe>`;
 
       } else {
 
         // 그 외에는 모두 YouTube ID로 간주
-        iframeSrc = `https://www.youtube.com/embed/${video}?rel=0&playsinline=1&autoplay=1`;
+        videoHtml = `
+          <iframe
+            src="https://www.youtube.com/embed/${video}?rel=0&playsinline=1&autoplay=1"
+            frameborder="0"
+            allow="autoplay; fullscreen"
+            allowfullscreen></iframe>`;
       }
 
       $('#modal .modal-cont').prepend(`
         <div class="video-area">
           <div class="video">
-            <iframe
-              src="${iframeSrc}"
-              frameborder="0"
-              allow="autoplay; fullscreen"
-              allowfullscreen>
-            </iframe>
+            ${videoHtml}
           </div>
         </div>
 
@@ -525,28 +541,6 @@ $('.projects-list').each(function () {
 
       $('#modal').removeClass('dark');
       $('#modal').addClass('light');
-
-    // if(hasVideo) {
-    //   $('#modal').removeClass('light');
-    //   $('#modal').addClass('dark');
-
-    //   $('#modal .modal-cont').prepend(`
-    //     <div class="video-area">
-    //       <div class="video">
-    //         <iframe src="https://www.youtube.com/embed/${$(this).data('video')}?rel=0&playsinline=1&autoplay=1" frameborder="0" name="" allowfullscreen></iframe>
-    //       </div>
-    //     </div>
-    //     <div class="info-area">
-    //       <h2>${projectTit}</h2>
-    //       <div class="tools">
-    //         <img src="img/tool/ico_${tools}.png" alt="${tools}" title="${tools}">
-    //       </div>
-    //       <div class="desc">${projectDesc}</div>
-    //     </div>
-    //   `);
-    //  }else{
-    //   $('#modal').removeClass('dark');
-    //   $('#modal').addClass('light');
 
       // alert('비디오 없음');
       // View 정보 가져오기
@@ -617,6 +611,9 @@ $('.projects-list').each(function () {
 
   //modal > close
   $('#modal .btn-close').click(function(){
+    // 로컬 영상 재생 정지 (DOM 제거 전에 먼저)
+    $('#modal video').each(function(){ this.pause(); this.currentTime = 0; });
+
     $('#modal').removeClass('active');
     $('#modal').removeClass('dark');
     $('#modal').removeClass('light');
