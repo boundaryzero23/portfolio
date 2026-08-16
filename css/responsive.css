@@ -293,7 +293,7 @@
 
   /* #modal.light .inner {padding-top: 10rem;} */
   #modal.light h2 span {margin-right: .3rem;}
-  #modal.light img {width: 32px;}
+  /* #modal.light img {width: 32px;} */
   #modal.light .info-area li:nth-child(odd) {flex-basis: 60%;}
   #modal.light .info-area li:nth-child(even) {flex-basis: 35%;}
   
