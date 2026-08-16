@@ -256,7 +256,7 @@
 
   #modal .inner {width: 94%;}
   #modal h2 {font-size: 2.4rem;}
-  #modal .video-area .video {padding-top: 100%;}
+  /* #modal .video-area .video {padding-top: 100%;} */
   #modal.dark .info-area {padding: 0 1rem;}
   #modal.light .inner {padding-top: 9rem;}
   #modal.light h2 {padding: 1.5rem 6rem 1.5rem 2rem;}
