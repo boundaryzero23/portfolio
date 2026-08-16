@@ -120,6 +120,9 @@
 @media screen and (max-width:1024px) {
   #modal.light .info-area ul {flex-wrap: wrap;}
   #modal.light .info-area li {padding: 0.5rem 0;}
+  #modal.light .info-area dt,
+  #modal.light .info-area dd {font-size: 1.6rem;}
+  #modal .info-area .desc p {font-size: 1.4rem;}
 
   /* ---- About New ---- */
   #about .why-image {width: 41rem; top: 10rem; right: -7rem;}
@@ -208,6 +211,7 @@
 
   #modal .video-area .video {padding-top: 75%;}
   #modal.light .info-area li {flex-basis: 50%;}
+  #modal.light .info-area dd span {width: 1.6rem; height: 1.6rem;}
 }
 @media screen and (max-width:640px) {
   .container {width: 90%;}
@@ -258,10 +262,12 @@
   #modal h2 {font-size: 2.4rem;}
   #modal .video-area .video {padding-top: 100%;}
   #modal.dark .info-area {padding: 0 1rem;}
+  #modal.light .info-area dt,
+  #modal.light .info-area dd {font-size: 1.4rem;}
+  #modal .info-area .desc p {font-size: 1.3rem;}
   #modal.light .inner {padding-top: 9rem;}
   #modal.light h2 {padding: 1.5rem 6rem 1.5rem 2rem;}
   #modal.light h2 img {width: 48px;}
-  #modal.light .info-area dt {font-size: 1.6rem;}
   #modal.light .btn-close {top: 2rem;}
   #modal.dark h2 img {padding: 0 0 0 .5rem; transform: scale(.6);}
 }
@@ -293,7 +299,7 @@
 
   /* #modal.light .inner {padding-top: 10rem;} */
   #modal.light h2 span {margin-right: .3rem;}
-  /* #modal.light img {width: 32px;} */
+  #modal.light h2 img {width: 32px;}
   #modal.light .info-area li:nth-child(odd) {flex-basis: 60%;}
   #modal.light .info-area li:nth-child(even) {flex-basis: 35%;}
   
