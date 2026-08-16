@@ -591,7 +591,7 @@ $('.projects-list').each(function () {
           <div class="desc">${projectDesc}</div>
         </div>
         <div class="view-area">
-          <img src="img/projects/view_${viewNum}.jpg">
+          <img src="img/projects/view_${viewNum}.jpg" loading="lazy" decoding="async">
           
         </div>
       `);
