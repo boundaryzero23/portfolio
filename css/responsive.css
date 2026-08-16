@@ -115,9 +115,9 @@
   footer .copyright {font-size: 1.5rem;}
 
   #modal .info-area {padding-bottom: 1rem;}
-  #modal.dark h2,
-  #modal.dark .tools {display: inline-block; vertical-align: middle;}
-  #modal.dark .tools {padding:0 0 1.5rem 1.5rem}
+  #modal.dark h2 span,
+  #modal.dark h2 img {display: inline-block; vertical-align: middle;}
+  #modal.dark h2 img {padding: 0 0 0 1rem;}
 }
 @media screen and (max-width:1024px) {
   #modal.light .info-area ul {flex-wrap: wrap;}
