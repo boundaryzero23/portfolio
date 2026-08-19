@@ -264,7 +264,7 @@
   #modal.dark .info-area {padding: 0 1rem;}
   #modal.light .info-area dt,
   #modal.light .info-area dd {font-size: 1.4rem;}
-  #modal .info-area .desc p {font-size: 1.3rem;}
+  /* #modal .info-area .desc p {font-size: 1.4rem;} */
   #modal.light .inner {padding-top: 9rem;}
   #modal.light h2 {padding: 1.5rem 6rem 1.5rem 2rem;}
   #modal.light h2 img {width: 48px;}
