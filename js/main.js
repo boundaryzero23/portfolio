@@ -591,7 +591,7 @@ $('.projects-list').each(function () {
           <div class="desc">${projectDesc}</div>
         </div>
         <div class="view-area">
-          <img src="img/projects/view_${viewNum}.jpg" loading="lazy" decoding="async">
+          <img src="img/projects/view_${viewNum}.webp" alt="${projectTit} 상세 화면" loading="lazy" decoding="async">
           
         </div>
       `);
